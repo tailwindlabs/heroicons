@@ -1,0 +1,14 @@
+{
+  "name": "heroicons",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "svgo": "^1.3.2"
+  },
+  "scripts": {
+    "build": "npm run build-outline-md && npm run build-solid-sm",
+    "build-outline-md": "svgo --config=svgo.outline.yaml -f ./src/outline-md -o ./dist/outline-md --pretty --indent=2",
+    "build-solid-sm": "svgo --config=svgo.solid.yaml -f ./src/solid-sm -o ./dist/solid-sm --pretty --indent=2"
+  }
+}

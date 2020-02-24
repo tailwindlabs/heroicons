@@ -1,0 +1,9 @@
+'plugins':
+  - 'removeDimensions': true
+  - 'removeXMLNS': true
+  - 'sortAttrs': true
+  - 'removeAttrs':
+      attrs: 'stroke'
+  - 'addAttributesToSVGElement':
+      attributes:
+        - 'stroke': 'currentColor'

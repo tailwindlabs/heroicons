@@ -1,0 +1,4 @@
+<svg viewBox="0 0 20 20" fill="currentColor">
+  <path stroke="#4A5568" stroke-linecap="round" stroke-width="2" d="M6 4H5a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1V5a1 1 0 00-1-1h-1"/>
+  <path d="M4 12h3l1 2h4l1-2h3v4H4v-4zM7.293 7.293a1 1 0 011.414 0L9 7.586V3a1 1 0 112 0v4.586l.293-.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z"/>
+</svg>
