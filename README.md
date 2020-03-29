@@ -18,7 +18,7 @@ Smaller 20x20 icons drawn with fills.
 
 ![](./.github/solid-sm-preview.svg)
 
-### Usage
+### Usage _(in HTML)_
 
 To use these icons, simply copy the source for the icon you need and inline it directly into your HTML:
 
@@ -39,3 +39,9 @@ To use these icons, simply copy the source for the icon you need and inline it d
 ```
 
 Both icon styles are preconfigured to be stylable by setting the `color` CSS property, either manually or using utility classes like `text-gray-500` in a framework like [Tailwind CSS](https://tailwindcss.com).
+
+
+### Usage _(in Affinity Designer)_
+To use these icons as an asset in Affinity Designer, 
+1. Download [icons-ad.afassets](src/asset/icons-ad.afassets) in the src directory, and
+2. Import the file through the Assets Panel in Affinity Designer
