@@ -18,6 +18,12 @@ Smaller 20x20 icons drawn with fills.
 
 ![](./.github/solid-sm-preview.svg)
 
+### Installation via NPM
+
+```sh
+npm i refactoringui/heroicons
+```
+
 ### Usage
 
 To use these icons, simply copy the source for the icon you need and inline it directly into your HTML:
