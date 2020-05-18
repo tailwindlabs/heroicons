@@ -10,25 +10,20 @@ A set of free MIT-licensed high-quality SVG icons for you to use in your web pro
 
 24x24 icons drawn with a stroke.
 
-![](./.github/outline-md-preview.svg)
+![](./.github/outline-preview.svg)
 
 ### Solid style
 
 Smaller 20x20 icons drawn with fills.
 
-![](./.github/solid-sm-preview.svg)
+![](./.github/solid-preview.svg)
 
 ### Usage
 
-To use these icons, simply copy the source for the icon you need and inline it directly into your HTML:
+To use these icons, simply copy the source for the icon you need (from the `outline` or `solid` directories, not the `src` directory) and inline it directly into your HTML:
 
 ```html
-<svg
-  class="h-6 w-6 text-gray-500"
-  fill="none"
-  viewBox="0 0 24 24"
-  stroke="currentColor"
->
+<svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path
     stroke-linecap="round"
     stroke-linejoin="round"
