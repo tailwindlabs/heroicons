@@ -1,6 +1,6 @@
 import { createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock } from "vue"
 
-export function render(_ctx, _cache) {
+export default function render(_ctx, _cache) {
 return (_openBlock(), _createBlock("svg", {
   fill: "none",
   viewBox: "0 0 24 24",

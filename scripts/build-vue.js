@@ -29,7 +29,10 @@ rimraf('./vue/outline/*')
               })
               .then((component) => {
                 const fileName = `${camelcase(file.replace(/\.svg$/, ''), { pascalCase: true })}.js`
-                const content = dedent(component)
+                const content = dedent(component).replace(
+                  'export function',
+                  'export default function'
+                )
                 return fs.writeFile(`./vue/solid/${fileName}`, content).then(() => fileName)
               })
           })
@@ -55,7 +58,10 @@ rimraf('./vue/outline/*')
               })
               .then((component) => {
                 const fileName = `${camelcase(file.replace(/\.svg$/, ''), { pascalCase: true })}.js`
-                const content = dedent(component)
+                const content = dedent(component).replace(
+                  'export function',
+                  'export default function'
+                )
                 return fs.writeFile(`./vue/outline/${fileName}`, content).then(() => fileName)
               })
           })
