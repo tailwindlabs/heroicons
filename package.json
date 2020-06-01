@@ -23,6 +23,7 @@
   },
   "files": [
     "react/",
+    "vue/",
     "outline/",
     "solid/"
   ]
