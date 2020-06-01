@@ -17,7 +17,7 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "npm run build-outline && npm run build-solid && npm run build-react && npm run build-vue",
-    "build-react": "svgr -d react/outline outline && svgr -d react/solid solid",
+    "build-react": "svgr --ext jsx -d react/outline outline && svgr --ext jsx -d react/solid solid",
     "build-vue": "node ./scripts/build-vue.js",
     "build-outline": "svgo --config=svgo.outline.yaml -f ./src/outline -o ./outline --pretty --indent=2",
     "build-solid": "svgo --config=svgo.solid.yaml -f ./src/solid -o ./solid --pretty --indent=2"
