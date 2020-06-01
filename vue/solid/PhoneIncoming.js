@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   functional: true,
   render(_h, _vm) {
     const { _c, _v, data, children = [] } = _vm;
