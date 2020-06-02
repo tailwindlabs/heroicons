@@ -1,6 +1,6 @@
 {
   "name": "heroicons",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
