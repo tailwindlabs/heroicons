@@ -4,12 +4,19 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@rollup/plugin-babel": "^5.0.4",
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-node-resolve": "^8.1.0",
     "@svgr/cli": "^5.4.0",
     "@svgr/core": "^5.4.0",
     "@vue/compiler-dom": "^3.0.0-beta.14",
     "camelcase": "^6.0.0",
     "dedent": "^0.7.0",
+    "react": "^16.13.1",
     "rimraf": "^3.0.2",
+    "rollup": "^2.18.2",
     "svg-to-vue": "^0.7.0",
     "svgo": "^1.3.2",
     "vue-template-compiler": "^2.6.11"
@@ -17,7 +24,7 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "npm run build-outline && npm run build-solid && npm run build-react && npm run build-vue",
-    "build-react": "node ./scripts/build-react.js",
+    "build-react": "node ./scripts/build-react.js && rollup -c",
     "build-vue": "node ./scripts/build-vue.js",
     "build-outline": "svgo --config=svgo.outline.yaml -f ./src/outline -o ./outline --pretty --indent=2",
     "build-solid": "svgo --config=svgo.solid.yaml -f ./src/solid -o ./solid --pretty --indent=2"
