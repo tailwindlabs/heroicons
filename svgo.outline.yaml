@@ -1,6 +1,6 @@
 'plugins':
   - 'removeDimensions': true
-  - 'removeXMLNS': true
+  - 'removeXMLNS': false
   - 'sortAttrs': true
   - 'removeAttrs':
       attrs: 'stroke'
