@@ -8,10 +8,6 @@ return (_openBlock(), _createBlock("svg", {
   stroke: "currentColor"
 }, [
   _createVNode("path", {
-    fill: "#fff",
-    d: "M0 0h24v24H0z"
-  }),
-  _createVNode("path", {
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
     "stroke-width": "2",
