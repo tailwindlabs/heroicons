@@ -8,7 +8,7 @@ const { compile: compileVue } = require('@vue/compiler-dom')
 
 let transform = {
   react: async (svg, componentName, format) => {
-    let component = await svgr(svg, {}, { componentName })
+    let component = await svgr(svg, { ref: true }, { componentName })
     let { code } = await babel.transformAsync(component, {
       plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }]],
     })
