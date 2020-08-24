@@ -11,7 +11,7 @@ return (_openBlock(), _createBlock("svg", {
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
     "stroke-width": "2",
-    d: "M20 12H4"
+    d: "M18 12H6"
   })
 ]))
 }
