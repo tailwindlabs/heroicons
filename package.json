@@ -15,7 +15,7 @@
     "vue-template-compiler": "^2.6.11"
   },
   "scripts": {
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "build": "npm run build-outline && npm run build-solid && npm run build-react && npm run build-vue",
     "build-react": "rm -rf ./react && mkdir ./react && mkdir ./react/solid && mkdir ./react/outline && node ./scripts/build-react.js",
     "build-vue": "rm -rf ./vue && mkdir ./vue && mkdir ./vue/solid && mkdir ./vue/outline && node ./scripts/build-vue.js",
