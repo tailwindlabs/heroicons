@@ -16,9 +16,10 @@
   },
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "npm run build-outline && npm run build-solid && npm run build-react && npm run build-vue",
+    "build": "npm run build-outline && npm run build-solid && npm run build-react && npm run build-vue && npm run build-blazor",
     "build-react": "rm -rf ./react && mkdir ./react && mkdir ./react/solid && mkdir ./react/outline && node ./scripts/build-react.js",
     "build-vue": "rm -rf ./vue && mkdir ./vue && mkdir ./vue/solid && mkdir ./vue/outline && node ./scripts/build-vue.js",
+    "build-blazor": "rm -rf ./blazor && mkdir ./blazor && mkdir ./blazor/solid && mkdir ./blazor/outline && node ./scripts/build-blazor.js",
     "build-outline": "svgo --config=svgo.outline.yaml -f ./src/outline -o ./optimized/outline --pretty --indent=2 && rm -rf ./outline && cp -R ./optimized/outline ./outline",
     "build-solid": "svgo --config=svgo.solid.yaml -f ./src/solid -o ./optimized/solid --pretty --indent=2 && rm -rf ./solid && cp -R ./optimized/solid ./solid"
   },
@@ -26,6 +27,7 @@
     "react/",
     "vue/",
     "outline/",
-    "solid/"
+    "solid/",
+    "blazor/"
   ]
 }
