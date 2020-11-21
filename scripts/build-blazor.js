@@ -4,7 +4,23 @@ const { promisify } = require('util')
 const rimraf = promisify(require('rimraf'))
 
 function svgToBlazor(svg, componentCategory) {
-  return `@namespace Heroicons.${componentCategory}\n${svg}`;
+  return `@namespace Heroicons.${componentCategory}
+${addConfigurableAttributesToSvgElement(svg)}
+${addParametersToComponent()}`;
+}
+
+function addConfigurableAttributesToSvgElement(svg) {
+  return svg.replace('<svg', '<svg class="@Class" style="@Style"');
+}
+
+function addParametersToComponent() {
+  return `@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  public string Style { get; set; } = string.Empty;
+}`
 }
 
 function buildProjectFile() {
