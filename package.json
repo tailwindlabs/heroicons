@@ -27,7 +27,6 @@
     "react/",
     "vue/",
     "outline/",
-    "solid/",
-    "blazor/"
+    "solid/"
   ]
 }
