@@ -13,7 +13,7 @@ function buildProjectFile() {
     <Company>Tailwind</Company>
     <Copyright>Copyright ©$([System.DateTime]::Now.Year) Tailwind</Copyright>
     <IsPackable>true</IsPackable>
-    <Version>0.4.2</Version>
+    <Version>${process.env.npm_package_version}</Version>
     <TargetFrameworks>netstandard2.1;net5.0</TargetFrameworks>
     <RazorLangVersion Condition="'$(TargetFramework)' == 'netstandard2.1'">3.0</RazorLangVersion>
     <Description>Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS.</Description>
