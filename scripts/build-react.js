@@ -1,21 +1,22 @@
 const fs = require('fs').promises
-const dedent = require('dedent')
 const camelcase = require('camelcase')
 const { promisify } = require('util')
 const rimraf = promisify(require('rimraf'))
 const svgr = require('@svgr/core').default
 
+const rootDir = './react'
+
 console.log(svgr)
 
 function svgToReact(svg, componentName) {
-  return svgr(svg, {}, { componentName })
+  return svgr(svg, { typescript: true }, { componentName })
 }
 
 console.log('Building React components...')
 
-rimraf('./react/outline/*')
+rimraf(`${rootDir}/lib/*`)
   .then(() => {
-    return rimraf('./react/solid/*')
+    return rimraf(`${rootDir}/solid/*`)
   })
   .then(() => {
     return Promise.all([
@@ -29,22 +30,22 @@ rimraf('./react/outline/*')
                 return svgToReact(content, `${componentName}Icon`)
               })
               .then((component) => {
-                const fileName = `${componentName}.jsx`
+                const fileName = `${componentName}.tsx`
                 const content = component
-                return fs.writeFile(`./react/solid/${fileName}`, content).then(() => fileName)
+                return fs.writeFile(`${rootDir}/solid/${fileName}`, content).then(() => fileName)
               })
           })
         ).then((fileNames) => {
           const exportStatements = fileNames
             .map((fileName) => {
-              const componentName = `${camelcase(fileName.replace(/\.jsx$/, ''), {
+              const componentName = `${camelcase(fileName.replace(/\.tsx$/, ''), {
                 pascalCase: true,
               })}`
-              return `export { default as ${componentName} } from './${fileName}'`
+              return `export { default as ${componentName} } from './${componentName}'`
             })
             .join('\n')
 
-          return fs.writeFile('./react/solid/index.js', exportStatements)
+          return fs.writeFile(`${rootDir}/solid/index.ts`, exportStatements)
         })
       }),
 
@@ -58,22 +59,22 @@ rimraf('./react/outline/*')
                 return svgToReact(content, `${componentName}Icon`)
               })
               .then((component) => {
-                const fileName = `${componentName}.jsx`
+                const fileName = `${componentName}.tsx`
                 const content = component
-                return fs.writeFile(`./react/outline/${fileName}`, content).then(() => fileName)
+                return fs.writeFile(`${rootDir}/outline/${fileName}`, content).then(() => fileName)
               })
           })
         ).then((fileNames) => {
           const exportStatements = fileNames
             .map((fileName) => {
-              const componentName = `${camelcase(fileName.replace(/\.jsx$/, ''), {
+              const componentName = `${camelcase(fileName.replace(/\.tsx$/, ''), {
                 pascalCase: true,
               })}`
-              return `export { default as ${componentName} } from './${fileName}'`
+              return `export { default as ${componentName} } from './${componentName}'`
             })
             .join('\n')
 
-          return fs.writeFile('./react/outline/index.js', exportStatements)
+          return fs.writeFile(`${rootDir}/outline/index.ts`, exportStatements)
         })
       }),
     ])
