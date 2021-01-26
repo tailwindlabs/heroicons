@@ -1,81 +1,103 @@
 const fs = require('fs').promises
-const dedent = require('dedent')
 const camelcase = require('camelcase')
 const { promisify } = require('util')
 const rimraf = promisify(require('rimraf'))
 const svgr = require('@svgr/core').default
-
-console.log(svgr)
-
-function svgToReact(svg, componentName) {
-  return svgr(svg, {}, { componentName })
-}
+const babel = require('@babel/core')
 
 console.log('Building React components...')
 
-rimraf('./react/outline/*')
-  .then(() => {
-    return rimraf('./react/solid/*')
+async function svgToReact(svg, componentName, format) {
+  let component = await svgr(svg, {}, { componentName })
+  let { code } = await babel.transformAsync(component, {
+    plugins: [
+      [require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }],
+    ],
   })
-  .then(() => {
-    return Promise.all([
-      fs.readdir('./solid').then((files) => {
-        return Promise.all(
-          files.map((file) => {
-            const componentName = `${camelcase(file.replace(/\.svg$/, ''), { pascalCase: true })}`
-            return fs
-              .readFile(`./solid/${file}`, 'utf8')
-              .then((content) => {
-                return svgToReact(content, `${componentName}Icon`)
-              })
-              .then((component) => {
-                const fileName = `${componentName}.jsx`
-                const content = component
-                return fs.writeFile(`./react/solid/${fileName}`, content).then(() => fileName)
-              })
-          })
-        ).then((fileNames) => {
-          const exportStatements = fileNames
-            .map((fileName) => {
-              const componentName = `${camelcase(fileName.replace(/\.jsx$/, ''), {
-                pascalCase: true,
-              })}`
-              return `export { default as ${componentName} } from './${fileName}'`
-            })
-            .join('\n')
 
-          return fs.writeFile('./react/solid/index.js', exportStatements)
-        })
-      }),
+  if (format === 'esm') {
+    return code
+  }
 
-      fs.readdir('./outline').then((files) => {
-        return Promise.all(
-          files.map((file) => {
-            const componentName = `${camelcase(file.replace(/\.svg$/, ''), { pascalCase: true })}`
-            return fs
-              .readFile(`./outline/${file}`, 'utf8')
-              .then((content) => {
-                return svgToReact(content, `${componentName}Icon`)
-              })
-              .then((component) => {
-                const fileName = `${componentName}.jsx`
-                const content = component
-                return fs.writeFile(`./react/outline/${fileName}`, content).then(() => fileName)
-              })
-          })
-        ).then((fileNames) => {
-          const exportStatements = fileNames
-            .map((fileName) => {
-              const componentName = `${camelcase(fileName.replace(/\.jsx$/, ''), {
-                pascalCase: true,
-              })}`
-              return `export { default as ${componentName} } from './${fileName}'`
-            })
-            .join('\n')
+  return code
+    .replace('import * as React from "react"', 'const React = require("react")')
+    .replace('export default', 'module.exports =')
+}
 
-          return fs.writeFile('./react/outline/index.js', exportStatements)
-        })
-      }),
+async function getIcons(style) {
+  let files = await fs.readdir(`./${style}`)
+  return Promise.all(
+    files.map(async (file) => ({
+      svg: await fs.readFile(`./${style}/${file}`, 'utf8'),
+      componentName: `${camelcase(file.replace(/\.svg$/, ''), {
+        pascalCase: true,
+      })}Icon`,
+    }))
+  )
+}
+
+function exportAll(icons, format, includeExtension = true) {
+  return icons
+    .map(({ componentName }) => {
+      let extension = includeExtension ? '.js' : ''
+      if (format === 'esm') {
+        return `export { default as ${componentName} } from './${componentName}${extension}'`
+      }
+      return `module.exports.${componentName} = require("./${componentName}${extension}")`
+    })
+    .join('\n')
+}
+
+async function buildIcons(style, format) {
+  let outDir = `./react/${style}`
+  if (format === 'esm') {
+    outDir += '/esm'
+  }
+
+  await fs.mkdir(outDir, { recursive: true })
+
+  let icons = await getIcons(style)
+
+  await Promise.all(
+    icons.flatMap(async ({ componentName, svg }) => [
+      fs.writeFile(
+        `${outDir}/${componentName}.js`,
+        await svgToReact(svg, componentName, format),
+        'utf8'
+      ),
+      fs.writeFile(
+        `${outDir}/${componentName}.d.ts`,
+        `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;\nexport default ${componentName};\n`,
+        'utf8'
+      ),
     ])
-  })
+  )
+
+  await fs.writeFile(`${outDir}/index.js`, exportAll(icons, format), 'utf8')
+  await fs.writeFile(
+    `${outDir}/index.d.ts`,
+    exportAll(icons, 'esm', false),
+    'utf8'
+  )
+}
+
+Promise.all([rimraf('./react/outline/*'), rimraf('./react/solid/*')])
+  .then(() =>
+    Promise.all([
+      buildIcons('solid', 'esm'),
+      buildIcons('solid', 'cjs'),
+      buildIcons('outline', 'esm'),
+      buildIcons('outline', 'cjs'),
+      fs.writeFile(
+        './react/outline/package.json',
+        `{"module": "./esm/index.js"}`,
+        'utf8'
+      ),
+      fs.writeFile(
+        './react/solid/package.json',
+        `{"module": "./esm/index.js"}`,
+        'utf8'
+      ),
+    ])
+  )
   .then(() => console.log('Finished building React components.'))

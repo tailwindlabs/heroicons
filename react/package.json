@@ -1,0 +1,16 @@
+{
+  "name": "@heroicons/react",
+  "version": "0.0.1-alpha.6",
+  "description": "",
+  "keywords": [],
+  "files": [
+    "outline",
+    "solid"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">= 16"
+  }
+}
