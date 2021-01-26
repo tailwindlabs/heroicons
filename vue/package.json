@@ -1,0 +1,16 @@
+{
+  "name": "@heroicons/vue",
+  "version": "0.0.1-alpha.3",
+  "description": "",
+  "keywords": [],
+  "files": [
+    "outline",
+    "solid"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "vue": ">= 3"
+  }
+}
