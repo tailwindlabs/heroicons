@@ -8,6 +8,7 @@ const heroiconsLoader = {
 
     const replaceElement = (element) => {
       const attributes = getAttrs(element);
+      const iconName = attributes["data-heroicons"];
 
       const classNames =
         element.classList.length > 0
@@ -18,8 +19,8 @@ const heroiconsLoader = {
         attributes["data-type"] && attributes["data-type"] === "outline";
 
       const svg = isOutline
-        ? outline[attributes["data-heroicons"]]
-        : solid[attributes["data-heroicons"]];
+        ? outline[iconName]
+        : solid[iconName];
   
       const span = document.createElement("span");
       if (classNames !== null) {
