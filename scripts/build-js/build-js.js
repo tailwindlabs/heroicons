@@ -45,7 +45,7 @@ const createLookupTables = async () => {
   };
 };
 
-createJsFile = async () => {
+const createJsFile = async () => {
   const lookupTables = await createLookupTables();
   const solid = JSON.stringify(lookupTables.solidLookupTable);
   const outline = JSON.stringify(lookupTables.outlineLookupTable);

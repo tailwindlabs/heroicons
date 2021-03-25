@@ -1,14 +1,7 @@
 const heroiconsLoader = {
   replaceAllIcons: () => {
-    const getAttrs = (element) =>
-    Array.from(element.attributes).reduce((attrs, attr) => {
-      attrs[attr.name] = attr.value;
-      return attrs;
-    }, {});
-
     const replaceElement = (element) => {
-      const attributes = getAttrs(element);
-      const iconName = attributes["data-heroicons"];
+      const iconName = element.dataset.heroicons;
 
       const classNames =
         element.classList.length > 0
@@ -16,7 +9,7 @@ const heroiconsLoader = {
           : null;
 
       const isOutline =
-        attributes["data-type"] && attributes["data-type"] === "outline";
+        element.dataset.iconType && element.dataset.iconType === "outline";
 
       const svg = isOutline
         ? outline[iconName]
@@ -33,11 +26,13 @@ const heroiconsLoader = {
       element.remove();
     };
 
-    const heroIcons = document.querySelectorAll("i[data-heroicons]");
+    const heroIcons = document.querySelectorAll("[data-heroicons]");
     for (const element of heroIcons) {
       replaceElement(element);
     }
   }
 }
 
-heroiconsLoader.replaceAllIcons();
+document.addEventListener("DOMContentLoaded", () => {
+  heroiconsLoader.replaceAllIcons();
+})
