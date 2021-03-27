@@ -36,3 +36,23 @@ To use these icons, simply copy the source for the icon you need from [heroicons
 Both icon styles are preconfigured to be stylable by setting the `color` CSS property, either manually or using utility classes like `text-gray-500` in a framework like [Tailwind CSS](https://tailwindcss.com).
 
 We also publish the icons to npm as `heroicons`, but we don't consider the directory structure stable yet and it could change in any release, so use the npm package at your own risk right now.
+
+## Use our icons as React's components
+
+First, install the dependencies. ```npm install```.
+
+To create the React's components. Run:
+```bash
+node ./scripts/build-react-icons.js
+```
+That would create two folders in `./react-icons/`. The folder `outline` for the outline icons, and `solid` folder for the solid ones. Inside you may find `*.js` files.
+
+If you use `Typescript`. You can get them by running:
+```bash
+node ./scripts/build-react-icons.js tsx=true
+```
+
+You can delete those `*.js` or `*.tsx` files by running:
+```bash
+node ./scripts/delete-react-icons.js
+```
