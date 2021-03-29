@@ -7,7 +7,7 @@
 <p>
 
 <p align="center">
-  <a href="https://heroicons.com" style="font-weight: bold;">Browse at Heroicons.com &rarr;</a>
+  <a href="https://heroicons.com"><strong>Browse at Heroicons.com &rarr;</strong></a>
 </p>
 
 ### Basic Usage
