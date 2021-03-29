@@ -10,9 +10,7 @@ let transform = {
   react: async (svg, componentName, format) => {
     let component = await svgr(svg, {}, { componentName })
     let { code } = await babel.transformAsync(component, {
-      plugins: [
-        [require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }],
-      ],
+      plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }]],
     })
 
     if (format === 'esm') {
@@ -20,10 +18,7 @@ let transform = {
     }
 
     return code
-      .replace(
-        'import * as React from "react"',
-        'const React = require("react")'
-      )
+      .replace('import * as React from "react"', 'const React = require("react")')
       .replace('export default', 'module.exports =')
   },
   vue: (svg, componentName, format) => {
@@ -52,10 +47,10 @@ let transform = {
 }
 
 async function getIcons(style) {
-  let files = await fs.readdir(`./${style}`)
+  let files = await fs.readdir(`./optimized/${style}`)
   return Promise.all(
     files.map(async (file) => ({
-      svg: await fs.readFile(`./${style}/${file}`, 'utf8'),
+      svg: await fs.readFile(`./optimized/${style}/${file}`, 'utf8'),
       componentName: `${camelcase(file.replace(/\.svg$/, ''), {
         pascalCase: true,
       })}Icon`,
@@ -96,9 +91,7 @@ async function buildIcons(package, style, format) {
 
       return [
         fs.writeFile(`${outDir}/${componentName}.js`, content, 'utf8'),
-        ...(types
-          ? [fs.writeFile(`${outDir}/${componentName}.d.ts`, types, 'utf8')]
-          : []),
+        ...(types ? [fs.writeFile(`${outDir}/${componentName}.d.ts`, types, 'utf8')] : []),
       ]
     })
   )
@@ -106,37 +99,22 @@ async function buildIcons(package, style, format) {
   await fs.writeFile(`${outDir}/index.js`, exportAll(icons, format), 'utf8')
 
   if (package === 'react') {
-    await fs.writeFile(
-      `${outDir}/index.d.ts`,
-      exportAll(icons, 'esm', false),
-      'utf8'
-    )
+    await fs.writeFile(`${outDir}/index.d.ts`, exportAll(icons, 'esm', false), 'utf8')
   }
 }
 
 function main(package) {
   console.log(`Building ${package} package...`)
 
-  Promise.all([
-    rimraf(`./${package}/outline/*`),
-    rimraf(`./${package}/solid/*`),
-  ])
+  Promise.all([rimraf(`./${package}/outline/*`), rimraf(`./${package}/solid/*`)])
     .then(() =>
       Promise.all([
         buildIcons(package, 'solid', 'esm'),
         buildIcons(package, 'solid', 'cjs'),
         buildIcons(package, 'outline', 'esm'),
         buildIcons(package, 'outline', 'cjs'),
-        fs.writeFile(
-          `./${package}/outline/package.json`,
-          `{"module": "./esm/index.js"}`,
-          'utf8'
-        ),
-        fs.writeFile(
-          `./${package}/solid/package.json`,
-          `{"module": "./esm/index.js"}`,
-          'utf8'
-        ),
+        fs.writeFile(`./${package}/outline/package.json`, `{"module": "./esm/index.js"}`, 'utf8'),
+        fs.writeFile(`./${package}/solid/package.json`, `{"module": "./esm/index.js"}`, 'utf8'),
       ])
     )
     .then(() => console.log(`Finished building ${package} package.`))
