@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tailwindlabs/heroicons/main/.github/logo.svg" alt="Heroicons">
+  <img src="https://raw.githubusercontent.com/tailwindlabs/heroicons/master/.github/logo.svg" alt="Heroicons">
 </p>
 
 <p align="center">
