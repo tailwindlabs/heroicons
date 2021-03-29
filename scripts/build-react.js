@@ -5,10 +5,10 @@ const { promisify } = require('util')
 const rimraf = promisify(require('rimraf'))
 const svgr = require('@svgr/core').default
 
-console.log(svgr)
-
 function svgToReact(svg, componentName) {
-  return svgr(svg, {}, { componentName })
+  return svgr(svg, {
+    ref: true
+  }, { componentName })
 }
 
 console.log('Building React components...')
