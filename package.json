@@ -1,5 +1,6 @@
 {
   "name": "heroicons",
+  "version": "0.4.2",
   "license": "MIT",
   "files": [
     "outline/",
