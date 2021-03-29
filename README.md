@@ -10,6 +10,13 @@
   <a href="https://heroicons.com"><strong>Browse at Heroicons.com &rarr;</strong></a>
 </p>
 
+
+<p align="center">
+    <a href="https://github.com/tailwindlabs/heroicons/releases"><img src="https://img.shields.io/npm/v/heroicons" alt="Latest Release"></a>
+    <a href="https://github.com/tailwindlabs/heroicons/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/heroicons.svg" alt="License"></a>
+</p>
+
+
 ### Basic Usage
 
 The quickest way to use these icons is to simply copy the source for the icon you need from [heroicons.com](https://heroicons.com) and inline it directly into your HTML:
