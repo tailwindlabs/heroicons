@@ -17,7 +17,7 @@
 </p>
 
 
-### Basic Usage
+## Basic Usage
 
 The quickest way to use these icons is to simply copy the source for the icon you need from [heroicons.com](https://heroicons.com) and inline it directly into your HTML:
 
@@ -34,7 +34,7 @@ The quickest way to use these icons is to simply copy the source for the icon yo
 
 Both icon styles are preconfigured to be stylable by setting the `color` CSS property, either manually or using utility classes like `text-gray-500` in a framework like [Tailwind CSS](https://tailwindcss.com).
 
-### React
+## React
 
 First, install `@heroicons/react` from npm:
 
@@ -64,7 +64,7 @@ Icons use an upper camel case naming convention and are always suffixed with the
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/react/outline/)
 
 
-### Vue
+## Vue
 
 First, install `@heroicons/vue` from npm:
 
@@ -96,3 +96,7 @@ The 24x24 outline icons can be imported from `@heroicons/react/outline`, and the
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/outline/)
+
+## License
+
+This library is MIT licensed.
