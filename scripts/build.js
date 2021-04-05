@@ -44,6 +44,27 @@ let transform = {
       )
       .replace('export function render', 'module.exports = function render')
   },
+  vue2: (svg, componentName, format) => {
+    let code = `<template>\n` + svg + `</template>`
+
+    if (format === 'esm') {
+      return code.replace('export function', 'export default function')
+    }
+
+    return code
+      .replace(
+        /import\s+\{\s*([^}]+)\s*\}\s+from\s+(['"])(.*?)\2/,
+        (_match, imports, _quote, mod) => {
+          let newImports = imports
+            .split(',')
+            .map((i) => i.trim().replace(/\s+as\s+/, ': '))
+            .join(', ')
+
+          return `const { ${newImports} } = require("${mod}")`
+        }
+      )
+      .replace('export function render', 'module.exports = function render')
+  },
 }
 
 async function getIcons(style) {
@@ -58,10 +79,10 @@ async function getIcons(style) {
   )
 }
 
-function exportAll(icons, format, includeExtension = true) {
+function exportAll(icons, format, extension = '.js') {
   return icons
     .map(({ componentName }) => {
-      let extension = includeExtension ? '.js' : ''
+      //   let extension = extension ? extension : ''
       if (format === 'esm') {
         return `export { default as ${componentName} } from './${componentName}${extension}'`
       }
@@ -89,6 +110,10 @@ async function buildIcons(package, style, format) {
         types = `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;\nexport default ${componentName};\n`
       }
 
+      if (package === 'vue2') {
+        return [fs.writeFile(`${outDir}/${componentName}.vue`, content, 'utf8'), []]
+      }
+
       return [
         fs.writeFile(`${outDir}/${componentName}.js`, content, 'utf8'),
         ...(types ? [fs.writeFile(`${outDir}/${componentName}.d.ts`, types, 'utf8')] : []),
@@ -96,10 +121,14 @@ async function buildIcons(package, style, format) {
     })
   )
 
-  await fs.writeFile(`${outDir}/index.js`, exportAll(icons, format), 'utf8')
+  if (package === 'vue2') {
+    await fs.writeFile(`${outDir}/index.js`, exportAll(icons, format, '.vue'), 'utf8')
+  } else {
+    await fs.writeFile(`${outDir}/index.js`, exportAll(icons, format, '.js'), 'utf8')
+  }
 
   if (package === 'react') {
-    await fs.writeFile(`${outDir}/index.d.ts`, exportAll(icons, 'esm', false), 'utf8')
+    await fs.writeFile(`${outDir}/index.d.ts`, exportAll(icons, 'esm', ''), 'utf8')
   }
 }
 

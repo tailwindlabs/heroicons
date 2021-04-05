@@ -97,6 +97,39 @@ Icons use an upper camel case naming convention and are always suffixed with the
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/outline/)
 
+## Vue2
+
+First, install `@heroicons/vue2` from npm:
+
+```sh
+npm install @heroicons/vue2
+```
+
+Now each icon can be imported individually as a Vue component:
+
+```vue
+<template>
+  <div>
+    <BeakerIcon class="h-5 w-5 text-blue-500"/>
+    <p>...</p>
+  </div>
+</template>
+
+<script>
+import BeakerIcon from '@heroicons/vue2/solid'
+
+export default {
+  components: { BeakerIcon }
+}
+</script>
+```
+
+The 24x24 outline icons can be imported from `@heroicons/vue2/outline`, and the 20x20 solid icons can be imported from `@heroicons/vue2/solid`.
+
+Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
+
+[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue2/outline/)
+
 ## License
 
 This library is MIT licensed.
