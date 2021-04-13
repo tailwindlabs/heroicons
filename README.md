@@ -10,12 +10,10 @@
   <a href="https://heroicons.com"><strong>Browse at Heroicons.com &rarr;</strong></a>
 </p>
 
-
 <p align="center">
     <a href="https://github.com/tailwindlabs/heroicons/releases"><img src="https://img.shields.io/npm/v/heroicons" alt="Latest Release"></a>
     <a href="https://github.com/tailwindlabs/heroicons/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/heroicons.svg" alt="License"></a>
 </p>
-
 
 ## Basic Usage
 
@@ -50,7 +48,7 @@ import { BeakerIcon } from '@heroicons/react/solid'
 function MyComponent() {
   return (
     <div>
-      <BeakerIcon className="h-5 w-5 text-blue-500"/>
+      <BeakerIcon className="h-5 w-5 text-blue-500" />
       <p>...</p>
     </div>
   )
@@ -62,7 +60,6 @@ The 24x24 outline icons can be imported from `@heroicons/react/outline`, and the
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/react/outline/)
-
 
 ## Vue
 
@@ -77,7 +74,7 @@ Now each icon can be imported individually as a Vue component:
 ```vue
 <template>
   <div>
-    <BeakerIcon class="h-5 w-5 text-blue-500"/>
+    <BeakerIcon class="h-5 w-5 text-blue-500" />
     <p>...</p>
   </div>
 </template>
@@ -86,7 +83,7 @@ Now each icon can be imported individually as a Vue component:
 import { BeakerIcon } from '@heroicons/vue/solid'
 
 export default {
-  components: { BeakerIcon }
+  components: { BeakerIcon },
 }
 </script>
 ```
@@ -96,6 +93,33 @@ The 24x24 outline icons can be imported from `@heroicons/vue/outline`, and the 2
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/outline/)
+
+## Svelte
+
+First, install `@heroicons/svelte` from npm:
+
+```sh
+npm install @heroicons/svelte
+```
+
+Now each icon can be imported individually as a Svelte component:
+
+```svelte
+<script>
+import { BeakerIcon } from '@heroicons/svelte/solid'
+</script>
+
+<div>
+  <BeakerIcon class="h-5 w-5 text-blue-500"/>
+  <p>...</p>
+</div>
+```
+
+The 24x24 outline icons can be imported from `@heroicons/svelte/outline`, and the 20x20 solid icons can be imported from `@heroicons/svelte/solid`.
+
+Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
+
+[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/react/outline/)
 
 ## License
 
