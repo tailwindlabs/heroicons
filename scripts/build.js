@@ -5,6 +5,7 @@ const rimraf = promisify(require('rimraf'))
 const svgr = require('@svgr/core').default
 const babel = require('@babel/core')
 const { compile: compileVue } = require('@vue/compiler-dom')
+const svelte = require('svelte/compiler')
 
 let transform = {
   react: async (svg, componentName, format) => {
@@ -20,6 +21,21 @@ let transform = {
     return code
       .replace('import * as React from "react"', 'const React = require("react")')
       .replace('export default', 'module.exports =')
+  },
+  svelte: async (svg, componentName, format) => {
+    // inject {...$$props} to svg so we can forward all props
+    const svgEndIndex = svg.indexOf('>')
+    const src = `${svg.slice(0, svgEndIndex)} {...$$props}>${svg.slice(svgEndIndex)}`
+
+    let { js } = svelte.compile(src, {
+      format,
+      filename: componentName,
+    })
+
+    if (format === 'esm') {
+      return js.code
+    }
+    return js.code.replace('exports.default =', 'module.exports =')
   },
   vue: (svg, componentName, format) => {
     let { code } = compileVue(svg, {
