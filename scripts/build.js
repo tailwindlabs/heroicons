@@ -23,19 +23,11 @@ let transform = {
       .replace('export default', 'module.exports =')
   },
   svelte: async (svg, componentName, format) => {
-    // inject {...$$props} to svg so we can forward all props
+    // inject {...$$props} to <svg /> so we can forward all props
     const svgEndIndex = svg.indexOf('>')
-    const src = `${svg.slice(0, svgEndIndex)} {...$$props}>${svg.slice(svgEndIndex)}`
+    const src = `${svg.slice(0, svgEndIndex)} {...$$props}${svg.slice(svgEndIndex)}`
 
-    let { js } = svelte.compile(src, {
-      format,
-      filename: componentName,
-    })
-
-    if (format === 'esm') {
-      return js.code
-    }
-    return js.code.replace('exports.default =', 'module.exports =')
+    return src
   },
   vue: (svg, componentName, format) => {
     let { code } = compileVue(svg, {
@@ -74,10 +66,9 @@ async function getIcons(style) {
   )
 }
 
-function exportAll(icons, format, includeExtension = true) {
+function exportAll(icons, format, extension) {
   return icons
     .map(({ componentName }) => {
-      let extension = includeExtension ? '.js' : ''
       if (format === 'esm') {
         return `export { default as ${componentName} } from './${componentName}${extension}'`
       }
@@ -88,6 +79,8 @@ function exportAll(icons, format, includeExtension = true) {
 
 async function buildIcons(package, style, format) {
   let outDir = `./${package}/${style}`
+  let extension = package === 'svelte' ? '.svelte' : '.js'
+
   if (format === 'esm') {
     outDir += '/esm'
   }
@@ -106,21 +99,27 @@ async function buildIcons(package, style, format) {
       }
 
       return [
-        fs.writeFile(`${outDir}/${componentName}.js`, content, 'utf8'),
+        fs.writeFile(`${outDir}/${componentName}${extension}`, content, 'utf8'),
         ...(types ? [fs.writeFile(`${outDir}/${componentName}.d.ts`, types, 'utf8')] : []),
       ]
     })
   )
 
-  await fs.writeFile(`${outDir}/index.js`, exportAll(icons, format), 'utf8')
+  await fs.writeFile(`${outDir}/index.js`, exportAll(icons, format, extension), 'utf8')
 
   if (package === 'react') {
-    await fs.writeFile(`${outDir}/index.d.ts`, exportAll(icons, 'esm', false), 'utf8')
+    await fs.writeFile(`${outDir}/index.d.ts`, exportAll(icons, 'esm', '.d.ts'), 'utf8')
   }
 }
 
 function main(package) {
   console.log(`Building ${package} package...`)
+
+  let pkgJson = `{"module": "./esm/index.js"}`
+
+  if (package === 'svelte') {
+    pkgJson = `{"svelte": "./index.js", "module": "./esm/index.js"}`
+  }
 
   Promise.all([rimraf(`./${package}/outline/*`), rimraf(`./${package}/solid/*`)])
     .then(() =>
@@ -129,8 +128,8 @@ function main(package) {
         buildIcons(package, 'solid', 'cjs'),
         buildIcons(package, 'outline', 'esm'),
         buildIcons(package, 'outline', 'cjs'),
-        fs.writeFile(`./${package}/outline/package.json`, `{"module": "./esm/index.js"}`, 'utf8'),
-        fs.writeFile(`./${package}/solid/package.json`, `{"module": "./esm/index.js"}`, 'utf8'),
+        fs.writeFile(`./${package}/outline/package.json`, pkgJson, 'utf8'),
+        fs.writeFile(`./${package}/solid/package.json`, pkgJson, 'utf8'),
       ])
     )
     .then(() => console.log(`Finished building ${package} package.`))
