@@ -118,7 +118,7 @@ function main(package) {
   let pkgJson = `{"module": "./esm/index.js"}`
 
   if (package === 'svelte') {
-    pkgJson = `{"svelte": "./index.js", "module": "./esm/index.js"}`
+    pkgJson = `{"svelte": "./esm/index.js", "module": "./esm/index.js"}`
   }
 
   Promise.all([rimraf(`./${package}/outline/*`), rimraf(`./${package}/solid/*`)])
