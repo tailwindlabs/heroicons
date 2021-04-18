@@ -83,11 +83,10 @@ async function buildIcons(package, style, format) {
   await Promise.all(
     icons.flatMap(async ({ componentName, svg }) => {
       let content = await transform[package](svg, componentName, format)
-      let types
-
-      if (package === 'react') {
-        types = `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;\nexport default ${componentName};\n`
-      }
+      let types =
+        package === 'react'
+          ? `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;\nexport default ${componentName};\n`
+          : `export default import("vue").DefineComponent;`
 
       return [
         fs.writeFile(`${outDir}/${componentName}.js`, content, 'utf8'),
@@ -98,9 +97,7 @@ async function buildIcons(package, style, format) {
 
   await fs.writeFile(`${outDir}/index.js`, exportAll(icons, format), 'utf8')
 
-  if (package === 'react') {
-    await fs.writeFile(`${outDir}/index.d.ts`, exportAll(icons, 'esm', false), 'utf8')
-  }
+  await fs.writeFile(`${outDir}/index.d.ts`, exportAll(icons, 'esm', false), 'utf8')
 }
 
 function main(package) {
