@@ -66,7 +66,7 @@ Icons use an upper camel case naming convention and are always suffixed with the
 
 ## Vue
 
-**Note that this library currently only supports Vue 3.**
+*Note that this library currently only supports Vue 3.*
 
 First, install `@heroicons/vue` from npm:
 
