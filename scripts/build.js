@@ -91,11 +91,11 @@ async function buildIcons(package, style, format) {
 
       if (package === 'react') {
         types = `import * as React from 'react';
-        /**
-         * ${previewImage}
-         */
-        declare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;
-        export default ${componentName};\n`
+/**
+ * ${previewImage}
+ */
+declare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;
+export default ${componentName};\n`
       }
 
       return [
