@@ -5,6 +5,7 @@ const rimraf = promisify(require('rimraf'))
 const svgr = require('@svgr/core').default
 const babel = require('@babel/core')
 const { compile: compileVue } = require('@vue/compiler-dom')
+const base64Img = require('base64-img')
 
 let transform = {
   react: async (svg, componentName, format) => {
@@ -50,6 +51,7 @@ async function getIcons(style) {
   let files = await fs.readdir(`./optimized/${style}`)
   return Promise.all(
     files.map(async (file) => ({
+      path: `./src/${style}/${file}`,
       svg: await fs.readFile(`./optimized/${style}/${file}`, 'utf8'),
       componentName: `${camelcase(file.replace(/\.svg$/, ''), {
         pascalCase: true,
@@ -81,12 +83,19 @@ async function buildIcons(package, style, format) {
   let icons = await getIcons(style)
 
   await Promise.all(
-    icons.flatMap(async ({ componentName, svg }) => {
+    icons.flatMap(async ({ componentName, svg, path }) => {
       let content = await transform[package](svg, componentName, format)
+      let preview = base64Img.base64Sync(path)
+      let previewImage = `![${componentName}](${preview})`
       let types
 
       if (package === 'react') {
-        types = `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;\nexport default ${componentName};\n`
+        types = `import * as React from 'react';
+        /**
+         * ${previewImage}
+         */
+        declare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;
+        export default ${componentName};\n`
       }
 
       return [
