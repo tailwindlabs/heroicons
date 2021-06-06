@@ -5,7 +5,6 @@ const rimraf = promisify(require('rimraf'))
 const svgr = require('@svgr/core').default
 const babel = require('@babel/core')
 const { compile: compileVue } = require('@vue/compiler-dom')
-const svelte = require('svelte/compiler')
 
 let transform = {
   react: async (svg, componentName, format) => {
@@ -109,6 +108,8 @@ async function buildIcons(package, style, format) {
 
   if (package === 'react') {
     await fs.writeFile(`${outDir}/index.d.ts`, exportAll(icons, 'esm', '.d.ts'), 'utf8')
+  } else if (package === 'svelte') {
+    await fs.writeFile(`${outDir}/index.d.ts`, exportAll(icons, 'esm', '.svelte'), 'utf8')
   }
 }
 
