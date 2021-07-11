@@ -9,6 +9,7 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "npm run build-outline && npm run build-solid && npm run build-react && npm run build-vue",
+    "build-js": "rm -rf ./js && mkdir ./js && node ./scripts/build-js/build-js.js",
     "build-react": "node ./scripts/build.js react",
     "build-vue": "node ./scripts/build.js vue",
     "build-outline": "rimraf ./outline ./optimized/outline && svgo --config=svgo.outline.yaml -f ./src/outline -o ./optimized/outline --pretty --indent=2 && cp -R ./optimized/outline ./outline",
