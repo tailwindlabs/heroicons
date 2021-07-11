@@ -7,3 +7,4 @@
   - 'addAttributesToSVGElement':
       attributes:
         - 'fill': 'currentColor'
+  - 'convertPathData': false
