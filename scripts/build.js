@@ -86,7 +86,7 @@ async function buildIcons(package, style, format) {
       let types =
         package === 'react'
           ? `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;\nexport default ${componentName};\n`
-          : `export default import("vue").DefineComponent;`
+          : `import { DefineComponent } from 'vue';\ndeclare const ${componentName}: DefineComponent;\nexport default ${componentName};\n`
 
       return [
         fs.writeFile(`${outDir}/${componentName}.js`, content, 'utf8'),
