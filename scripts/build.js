@@ -44,6 +44,11 @@ let transform = {
       )
       .replace('export function render', 'module.exports = function render')
   },
+  svelte: (svg, componentName, format) => {
+    const element = svg.replace(/^<svg/g, '<svg {...$$$props}')
+
+    return element
+  },
 }
 
 async function getIcons(style) {
@@ -58,10 +63,9 @@ async function getIcons(style) {
   )
 }
 
-function exportAll(icons, format, includeExtension = true) {
+function exportAll(icons, format, extension = '') {
   return icons
     .map(({ componentName }) => {
-      let extension = includeExtension ? '.js' : ''
       if (format === 'esm') {
         return `export { default as ${componentName} } from './${componentName}${extension}'`
       }
@@ -83,21 +87,29 @@ async function buildIcons(package, style, format) {
   await Promise.all(
     icons.flatMap(async ({ componentName, svg }) => {
       let content = await transform[package](svg, componentName, format)
-      let types =
-        package === 'react'
-          ? `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;\nexport default ${componentName};\n`
-          : `import { RenderFunction } from 'vue';\ndeclare const ${componentName}: RenderFunction;\nexport default ${componentName};\n`
+      let types = ''
+
+      switch (package) {
+        case 'react':
+          types = `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;\nexport default ${componentName};\n`
+          break
+        case 'svelte':
+          types = `import { SvelteComponentTyped } from 'svelte';\ndeclare class ${componentName} extends SvelteComponentTyped<{ class: string }> {};\nexport default ${componentName};\n`
+          break
+        default:
+          types = `import { RenderFunction } from 'vue';\ndeclare const ${componentName}: RenderFunction;\nexport default ${componentName};\n`
+      }
 
       return [
-        fs.writeFile(`${outDir}/${componentName}.js`, content, 'utf8'),
+        fs.writeFile(`${outDir}/${componentName}.${package === 'svelte' ? 'svelte' : 'js'}`, content, 'utf8'),
         ...(types ? [fs.writeFile(`${outDir}/${componentName}.d.ts`, types, 'utf8')] : []),
       ]
     })
   )
 
-  await fs.writeFile(`${outDir}/index.js`, exportAll(icons, format), 'utf8')
+  await fs.writeFile(`${outDir}/index.js`, exportAll(icons, format, package === 'svelte' ? '.svelte' : '.js'), 'utf8')
 
-  await fs.writeFile(`${outDir}/index.d.ts`, exportAll(icons, 'esm', false), 'utf8')
+  await fs.writeFile(`${outDir}/index.d.ts`, exportAll(icons, 'esm'), 'utf8')
 }
 
 function main(package) {
