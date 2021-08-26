@@ -36,10 +36,14 @@ Both icon styles are preconfigured to be stylable by setting the `color` CSS pro
 
 ## React
 
-First, install `@heroicons/react` from npm:
+First, install `@heroicons/react` from npm or yarn:
 
 ```sh
+// npm
 npm install @heroicons/react
+
+// yarn
+yarn add @heroicons/react
 ```
 
 Now each icon can be imported individually as a React component:
@@ -68,10 +72,14 @@ Icons use an upper camel case naming convention and are always suffixed with the
 
 *Note that this library currently only supports Vue 3.*
 
-First, install `@heroicons/vue` from npm:
+First, install `@heroicons/vue` from npm or yarn:
 
 ```sh
+// npm
 npm install @heroicons/vue
+
+// yarn
+yarn add @heroicons/vue
 ```
 
 Now each icon can be imported individually as a Vue component:
