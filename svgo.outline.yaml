@@ -7,3 +7,4 @@
   - 'addAttributesToSVGElement':
       attributes:
         - 'stroke': 'currentColor'
+        - 'aria-hidden': 'true'
