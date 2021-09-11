@@ -4,7 +4,8 @@
   "license": "MIT",
   "files": [
     "outline/",
-    "solid/"
+    "solid/",
+    "README.md"
   ],
   "scripts": {
     "prepublishOnly": "npm run build",
