@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  A set of 450+ free MIT-licensed high-quality SVG icons for you to use in your web projects. <br>Available as basic SVG icons and via first-party <a href="#">React</a> and <a href="#">Vue</a> libraries.
+  A set of 450+ free MIT-licensed high-quality SVG icons for you to use in your web projects. <br>Available as basic SVG icons and via first-party <a href="#react">React</a> and <a href="#vue">Vue</a> libraries.
 <p>
 
 <p align="center">
