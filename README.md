@@ -41,6 +41,10 @@ First, install `@heroicons/react` from npm:
 ```sh
 npm install @heroicons/react
 ```
+Alternatively you may use yarn:
+```sh
+yarn add @heroicons/react
+```
 
 Now each icon can be imported individually as a React component:
 
@@ -72,6 +76,10 @@ First, install `@heroicons/vue` from npm:
 
 ```sh
 npm install @heroicons/vue
+```
+Alternatively you may use yarn:
+```sh
+yarn add @heroicons/react
 ```
 
 Now each icon can be imported individually as a Vue component:
