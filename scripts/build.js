@@ -111,7 +111,9 @@ function main(package) {
         buildIcons(package, 'outline', 'esm'),
         buildIcons(package, 'outline', 'cjs'),
         fs.writeFile(`./${package}/outline/package.json`, `{"module": "./esm/index.js"}`, 'utf8'),
+        fs.writeFile(`./${package}/outline/esm/package.json`, `{"type": "module"}`, 'utf8'),
         fs.writeFile(`./${package}/solid/package.json`, `{"module": "./esm/index.js"}`, 'utf8'),
+        fs.writeFile(`./${package}/solid/esm/package.json`, `{"type": "module"}`, 'utf8'),
       ])
     )
     .then(() => console.log(`Finished building ${package} package.`))
