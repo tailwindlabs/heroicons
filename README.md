@@ -124,7 +124,7 @@ The 24x24 outline icons can be imported from `@heroicons/svelte/outline`, and th
 
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
-[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/outline/)
+[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/svelte/outline/)
 
 ## License
 
