@@ -1,0 +1,22 @@
+{
+  "name": "@heroicons/svelte",
+  "license": "MIT",
+  "version": "1.0.5",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/tailwindlabs/heroicons#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tailwindlabs/heroicons.git"
+  },
+  "files": [
+    "outline",
+    "solid"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "svelte": ">= 3"
+  }
+}

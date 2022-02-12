@@ -99,6 +99,33 @@ Icons use an upper camel case naming convention and are always suffixed with the
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/outline/)
 
+## Svelte
+
+First, install `@heroicons/svelte` from npm:
+
+```sh
+npm install @heroicons/svelte
+```
+
+Now each icon can be imported individually as a Svelte component:
+
+```svelte
+<script>
+import { BeakerIcon } from '@heroicons/svelte/solid'
+</script>
+
+<div>
+  <BeakerIcon class="h-5 w-5 text-blue-500"/>
+  <p>...</p>
+</div>
+```
+
+The 24x24 outline icons can be imported from `@heroicons/svelte/outline`, and the 20x20 solid icons can be imported from `@heroicons/svelte/solid`.
+
+Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
+
+[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/outline/)
+
 ## License
 
 This library is MIT licensed.

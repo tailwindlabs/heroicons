@@ -44,6 +44,9 @@ let transform = {
       )
       .replace('export function render', 'module.exports = function render')
   },
+  svelte: (svg, componentName, format) => {
+    return svg.replace("<svg ", () => "<svg {...$$props} ")
+  },
 }
 
 async function getIcons(style) {
@@ -83,15 +86,37 @@ async function buildIcons(package, style, format) {
   await Promise.all(
     icons.flatMap(async ({ componentName, svg }) => {
       let content = await transform[package](svg, componentName, format)
-      let types =
-        package === 'react'
-          ? `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;\nexport default ${componentName};\n`
-          : `import { RenderFunction } from 'vue';\ndeclare const ${componentName}: RenderFunction;\nexport default ${componentName};\n`
 
-      return [
-        fs.writeFile(`${outDir}/${componentName}.js`, content, 'utf8'),
+      const settingsByPackage = {
+        react: {
+          types: `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;\nexport default ${componentName};\n`,
+          ext: 'js',
+        },
+        vue: {
+          types: `import { RenderFunction } from 'vue';\ndeclare const ${componentName}: RenderFunction;\nexport default ${componentName};\n`,
+          ext: 'js',
+        },
+        svelte: {
+          types: `import { SvelteComponentTyped } from "svelte";\nexport declare class ${componentName} extends SvelteComponentTyped<svelte.JSX.HTMLAttributes<HTMLElementTagNameMap["svg"]>, {}, { default: {}; } > {};`,
+          ext: 'svelte',
+          additionalAction(){
+            fs.writeFile(`${outDir}/${componentName}.js`, `import ${componentName} from "./${componentName}.svelte";\nexport default ${componentName};`, 'utf8')
+          }
+        },
+      }
+
+      const { types, ext, additionalAction } = settingsByPackage[package]
+
+      const actions = [
+        fs.writeFile(`${outDir}/${componentName}.${ext}`, content, 'utf8'),
         ...(types ? [fs.writeFile(`${outDir}/${componentName}.d.ts`, types, 'utf8')] : []),
       ]
+
+      if(additionalAction){
+        actions.push(additionalAction())
+      }
+
+      return actions
     })
   )
 
