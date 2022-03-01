@@ -3,8 +3,11 @@
   - 'removeXMLNS': false
   - 'sortAttrs': true
   - 'removeAttrs':
-      attrs: 'stroke'
+      attrs:
+        - 'stroke'
+        - 'path:stroke-width'
   - 'addAttributesToSVGElement':
       attributes:
+        - 'stroke-width': '2'
         - 'stroke': 'currentColor'
         - 'aria-hidden': 'true'
