@@ -109,7 +109,7 @@ async function buildIcons(package, style, format) {
 }
 
 async function main(package) {
-  const cjsPackageJson = { module: './esm.index.js', sideEffects: false }
+  const cjsPackageJson = { module: './esm/index.js', sideEffects: false }
   const esmPackageJson = { type: 'module', sideEffects: false }
 
   console.log(`Building ${package} package...`)
