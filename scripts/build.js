@@ -2,10 +2,11 @@ const fs = require('fs').promises
 const camelcase = require('camelcase')
 const { promisify } = require('util')
 const rimraf = promisify(require('rimraf'))
-const svgr = require('@svgr/core').default
+const svgr = require('@svgr/core').transform
 const babel = require('@babel/core')
 const { compile: compileVue } = require('@vue/compiler-dom')
 const { dirname } = require('path')
+const { compile: compileSvelte } = require('svelte/compiler')
 
 let transform = {
   react: async (svg, componentName, format) => {
@@ -45,6 +46,17 @@ let transform = {
       )
       .replace('export function render', 'module.exports = function render')
   },
+  svelte: (svg, componentName, format) => {
+    svg = svg.replace('<svg', '<svg class={className}')
+
+    svg = `<script>
+    export let className;
+  </script>
+  
+  ${svg}`
+
+    return svg
+  },
 }
 
 async function getIcons(style) {
@@ -77,10 +89,18 @@ async function ensureWrite(file, text) {
 }
 
 async function ensureWriteJson(file, json) {
+  if (file.includes('svelte') && file.includes('esm')) {
+    return
+  }
+
   await ensureWrite(file, JSON.stringify(json, null, 2))
 }
 
 async function buildIcons(package, style, format) {
+  if (package === 'svelte' && format === 'esm') {
+    return
+  }
+
   let outDir = `./${package}/${style}`
   if (format === 'esm') {
     outDir += '/esm'
@@ -91,13 +111,24 @@ async function buildIcons(package, style, format) {
   await Promise.all(
     icons.flatMap(async ({ componentName, svg }) => {
       let content = await transform[package](svg, componentName, format)
-      let types =
-        package === 'react'
-          ? `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;\nexport default ${componentName};\n`
-          : `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';\ndeclare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;\nexport default ${componentName};\n`
+
+      let types = null
+      let extension = '.js'
+
+      switch (package) {
+        case 'vue':
+          types = `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';\ndeclare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;\nexport default ${componentName};\n`
+          break
+        case 'react':
+          types = `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'>): JSX.Element;\nexport default ${componentName};\n`
+          break
+        case 'svelte':
+          extension = '.svelte'
+          break
+      }
 
       return [
-        ensureWrite(`${outDir}/${componentName}.js`, content),
+        ensureWrite(`${outDir}/${componentName}${extension}`, content),
         ...(types ? [ensureWrite(`${outDir}/${componentName}.d.ts`, types)] : []),
       ]
     })

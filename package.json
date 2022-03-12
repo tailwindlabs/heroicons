@@ -9,9 +9,10 @@
   ],
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "npm run build-outline && npm run build-solid && npm run build-react && npm run build-vue",
+    "build": "npm run build-outline && npm run build-solid && npm run build-react && npm run build-vue && npm run build-svelte",
     "build-react": "node ./scripts/build.js react",
     "build-vue": "node ./scripts/build.js vue",
+    "build-svelte": "node ./scripts/build.js svelte",
     "build-outline": "rimraf ./outline ./optimized/outline && svgo --config=svgo.outline.js -f ./src/outline -o ./optimized/outline && cp -R ./optimized/outline ./outline",
     "build-solid": "rimraf ./solid ./optimized/solid && svgo --config=svgo.solid.js -f ./src/solid -o ./optimized/solid && cp -R ./optimized/solid ./solid"
   },
