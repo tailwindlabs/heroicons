@@ -1,5 +1,11 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
-  - name: New Icon Suggestion
+  - name: Get Help
+    url: https://github.com/tailwindlabs/heroicons/discussions/new?category=help
+    about: If you can't get something to work the way you expect, open a question in our discussion forums.
+  - name: Icon Suggestion
     url: https://github.com/tailwindlabs/heroicons/discussions/new?category=ideas
-    about: Have a suggestion for a new icon? Do it here!
+    about: 'Suggest any icon ideas you have using our discussion forums.'
+  - name: Bug Report
+    url: https://github.com/tailwindlabs/heroicons/issues/new
+    about: If you think you've found an actual bug, create a bug report.
