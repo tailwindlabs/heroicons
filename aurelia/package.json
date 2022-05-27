@@ -1,0 +1,20 @@
+{
+    "name": "@heroicons/aurelia",
+    "license": "MIT",
+    "version": "1.0.6",
+    "description": "",
+    "keywords": [],
+    "homepage": "https://github.com/tailwindlabs/heroicons#readme",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/tailwindlabs/heroicons.git"
+    },
+    "files": [
+      "outline",
+      "solid"
+    ],
+    "publishConfig": {
+      "access": "public"
+    }
+  }
+  

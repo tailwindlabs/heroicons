@@ -45,6 +45,29 @@ let transform = {
       )
       .replace('export function render', 'module.exports = function render')
   },
+  aurelia: async (svg, componentName, format) => {
+    const component = `
+import { customElement, bindable } from 'aurelia';
+
+@customElement({
+  name: '${componentName
+    .replace(/(^[A-Z])/, ([first]) => first.toLowerCase())
+    .replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`)}',
+  template: \`${svg.replace(/^<svg /, '<svg class.bind="class"')}\`
+})
+export default class ${componentName} {
+  @bindable class;
+}
+`
+    let { code } = await babel.transformAsync(component, {
+      plugins: [
+        ['@babel/plugin-proposal-decorators', { legacy: true }],
+        '@babel/plugin-proposal-class-properties',
+      ],
+    })
+
+    return code
+  },
 }
 
 async function getIcons(style) {

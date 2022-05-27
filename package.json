@@ -9,15 +9,19 @@
   ],
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "npm run build-outline && npm run build-solid && npm run build-react && npm run build-vue",
+    "build": "npm run build-outline && npm run build-solid && npm run build-react && npm run build-vue && npm run build-aurelia",
     "build-react": "node ./scripts/build.js react",
     "build-vue": "node ./scripts/build.js vue",
+    "build-aurelia": "node ./scripts/build.js aurelia",
     "build-outline": "rimraf ./outline ./optimized/outline && svgo --config=svgo.outline.yaml -f ./src/outline -o ./optimized/outline --pretty --indent=2 && cp -R ./optimized/outline ./outline",
     "build-solid": "rimraf ./solid ./optimized/solid && svgo --config=svgo.solid.yaml -f ./src/solid -o ./optimized/solid --pretty --indent=2 && cp -R ./optimized/solid ./solid"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-react-jsx": "^7.12.12",
+    "@babel/plugin-proposal-class-properties": "^7.17.12",
+    "@babel/plugin-proposal-decorators": "^7.17.12",
+    "@babel/plugin-transform-typescript": "^7.18.1",
     "@svgr/core": "^5.5.0",
     "@vue/compiler-dom": "^3.0.5",
     "camelcase": "^6.0.0",
