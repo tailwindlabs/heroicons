@@ -62,6 +62,14 @@ Icons use an upper camel case naming convention and are always suffixed with the
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/react/outline/)
 
+### TypeScript
+
+To create a general `Icon` type that all icons conform to:
+
+```js
+type Icon = React.ComponentType<React.ComponentProps<'svg'>>;
+```
+
 
 ## Vue
 
@@ -97,6 +105,15 @@ The 24x24 outline icons can be imported from `@heroicons/vue/outline`, and the 2
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/outline/)
+
+### TypeScript
+
+To create a general `Icon` type that all icons conform to:
+
+```js
+import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';
+type Icon = FunctionalComponent<HTMLAttributes & VNodeProps>;
+```
 
 ## License
 
