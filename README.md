@@ -98,6 +98,24 @@ Icons use an upper camel case naming convention and are always suffixed with the
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/outline/)
 
+## Elixir/Phoenix
+
+First, add `phoenix_heroicons` to your list of dependencies in `mix.exs`:
+
+```elixir
+def deps do
+  [{:phoenix_heroicons, "~> 0.1.0"}]
+end
+```
+
+Now, any icon can be referenced in a template via the `PhoenixHeroicons` module's `svg` funcion:
+
+```elixir
+<%= PhoenixHeroicons.svg("solid/thumb-up", class: "h-6 w-6 text-green-400") %>
+```
+
+Any attributes passed to the optional second argument will be placed on the outer `svg` element as part of rendering.
+
 ## License
 
 This library is MIT licensed.
