@@ -35,16 +35,16 @@ Both icon styles are preconfigured to be stylable by setting the `color` CSS pro
 
 ## React
 
-First, install `@heroicons/react` from npm:
+First, install `@sodaicons/react` from npm:
 
 ```sh
-npm install @heroicons/react
+npm install @sodaicons/react
 ```
 
 Now each icon can be imported individually as a React component:
 
 ```js
-import { BeakerIcon } from '@heroicons/react/solid'
+import { BeakerIcon } from '@sodaicons/react/solid'
 
 function MyComponent() {
   return (
@@ -56,21 +56,21 @@ function MyComponent() {
 }
 ```
 
-The 24x24 outline icons can be imported from `@heroicons/react/outline`, and the 20x20 solid icons can be imported from `@heroicons/react/solid`.
+The 24x24 outline icons can be imported from `@sodaicons/react/outline`, and the 20x20 solid icons can be imported from `@sodaicons/react/solid`.
 
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
-[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/react/outline/)
+[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@sodaicons/react/outline/)
 
 
 ## Vue
 
 *Note that this library currently only supports Vue 3.*
 
-First, install `@heroicons/vue` from npm:
+First, install `@sodaicons/vue` from npm:
 
 ```sh
-npm install @heroicons/vue
+npm install @sodaicons/vue
 ```
 
 Now each icon can be imported individually as a Vue component:
@@ -84,7 +84,7 @@ Now each icon can be imported individually as a Vue component:
 </template>
 
 <script>
-import { BeakerIcon } from '@heroicons/vue/solid'
+import { BeakerIcon } from '@sodaicons/vue/solid'
 
 export default {
   components: { BeakerIcon }
@@ -92,11 +92,11 @@ export default {
 </script>
 ```
 
-The 24x24 outline icons can be imported from `@heroicons/vue/outline`, and the 20x20 solid icons can be imported from `@heroicons/vue/solid`.
+The 24x24 outline icons can be imported from `@sodaicons/vue/outline`, and the 20x20 solid icons can be imported from `@sodaicons/vue/solid`.
 
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
-[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/outline/)
+[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@sodaicons/vue/outline/)
 
 ## License
 
