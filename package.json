@@ -12,8 +12,8 @@
     "build": "npm run build-outline && npm run build-solid && npm run build-react && npm run build-vue",
     "build-react": "node ./scripts/build.js react",
     "build-vue": "node ./scripts/build.js vue",
-    "build-outline": "rimraf ./outline ./optimized/outline && svgo --config=svgo.outline.yaml -f ./src/outline -o ./optimized/outline --pretty --indent=2 && cp -R ./optimized/outline ./outline",
-    "build-solid": "rimraf ./solid ./optimized/solid && svgo --config=svgo.solid.yaml -f ./src/solid -o ./optimized/solid --pretty --indent=2 && cp -R ./optimized/solid ./solid"
+    "build-outline": "rimraf ./outline ./optimized/outline && svgo --config=svgo.outline.yaml -f ./src/outline -o ./optimized/outline --pretty --indent=2 && npx cpy-cli ./optimized/outline/** ./outline",
+    "build-solid": "rimraf ./solid ./optimized/solid && svgo --config=svgo.solid.yaml -f ./src/solid -o ./optimized/solid --pretty --indent=2 && npx cpy-cli ./optimized/solid/** ./solid"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
