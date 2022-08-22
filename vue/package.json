@@ -11,7 +11,8 @@
   },
   "files": [
     "outline",
-    "solid"
+    "mini",
+    "filled"
   ],
   "publishConfig": {
     "access": "public"

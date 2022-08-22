@@ -8,6 +8,6 @@
         - 'path:stroke-width'
   - 'addAttributesToSVGElement':
       attributes:
-        - 'stroke-width': '2'
+        - 'stroke-width': '1.5'
         - 'stroke': 'currentColor'
         - 'aria-hidden': 'true'

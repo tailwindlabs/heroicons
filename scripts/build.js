@@ -114,17 +114,25 @@ async function main(package) {
 
   console.log(`Building ${package} package...`)
 
-  await Promise.all([rimraf(`./${package}/outline/*`), rimraf(`./${package}/solid/*`)])
+  await Promise.all([
+    rimraf(`./${package}/outline/*`),
+    rimraf(`./${package}/mini/*`),
+    rimraf(`./${package}/filled/*`),
+  ])
 
   await Promise.all([
-    buildIcons(package, 'solid', 'esm'),
-    buildIcons(package, 'solid', 'cjs'),
     buildIcons(package, 'outline', 'esm'),
     buildIcons(package, 'outline', 'cjs'),
+    buildIcons(package, 'mini', 'esm'),
+    buildIcons(package, 'mini', 'cjs'),
+    buildIcons(package, 'filled', 'esm'),
+    buildIcons(package, 'filled', 'cjs'),
     ensureWriteJson(`./${package}/outline/package.json`, cjsPackageJson),
     ensureWriteJson(`./${package}/outline/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/solid/package.json`, cjsPackageJson),
-    ensureWriteJson(`./${package}/solid/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/mini/package.json`, cjsPackageJson),
+    ensureWriteJson(`./${package}/mini/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/filled/package.json`, cjsPackageJson),
+    ensureWriteJson(`./${package}/filled/esm/package.json`, esmPackageJson),
   ])
 
   return console.log(`Finished building ${package} package.`)
