@@ -61,7 +61,7 @@ function MyComponent() {
 }
 ```
 
-The 24x24 outline icons can be imported from `@heroicons/react/24/outline`, and the 20x20 solid icons can be imported from `@heroicons/react/20/solid`.
+The 24x24 outline icons can be imported from `@heroicons/react/24/outline`, the 24x24 solid icons can be imported from `@heroicons/react/24/solid`, and the 20x20 solid icons can be imported from `@heroicons/react/20/solid`.
 
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
@@ -97,7 +97,7 @@ export default {
 </script>
 ```
 
-The 24x24 outline icons can be imported from `@heroicons/vue/24/outline`, and the 20x20 solid icons can be imported from `@heroicons/vue/20/solid`.
+The 24x24 outline icons can be imported from `@heroicons/vue/24/outline`, the 24x24 solid icons can be imported from `@heroicons/vue/24/solid`, and the 20x20 solid icons can be imported from `@heroicons/vue/20/solid`.
 
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
