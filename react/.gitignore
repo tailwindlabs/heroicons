@@ -1,3 +1,5 @@
 *
 !.gitignore
 !package.json
+!outline
+!solid
