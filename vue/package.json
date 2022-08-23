@@ -10,9 +10,8 @@
     "url": "https://github.com/tailwindlabs/heroicons.git"
   },
   "files": [
-    "outline",
-    "mini",
-    "filled"
+    "20",
+    "24"
   ],
   "publishConfig": {
     "access": "public"
