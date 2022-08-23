@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tailwindlabs/heroicons/master/.github/logo.svg" alt="Heroicons">
+  <img src="https://raw.githubusercontent.com/tailwindlabs/heroicons/v1/.github/logo.svg" alt="Heroicons">
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
 
 <p align="center">
     <a href="https://github.com/tailwindlabs/heroicons/releases"><img src="https://img.shields.io/npm/v/heroicons" alt="Latest Release"></a>
-    <a href="https://github.com/tailwindlabs/heroicons/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/heroicons.svg" alt="License"></a>
+    <a href="https://github.com/tailwindlabs/heroicons/blob/v1/LICENSE"><img src="https://img.shields.io/npm/l/heroicons.svg" alt="License"></a>
 </p>
 
 
