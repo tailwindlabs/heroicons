@@ -1,9 +1,9 @@
 <p align="center">
   <a href="https://heroicons.com/#gh-light-mode-only" target="_blank">
-    <img src="./.github/logo-light.svg" alt="Heroicons" width="350" height="70">
+    <img src="./.github/logo-light.svg" alt="Heroicons" width="300">
   </a>
   <a href="https://heroicons.com/#gh-dark-mode-only" target="_blank">
-    <img src="./.github/logo-dark.svg" alt="Heroicons" width="350" height="70">
+    <img src="./.github/logo-dark.svg" alt="Heroicons" width="300">
   </a>
 </p>
 
