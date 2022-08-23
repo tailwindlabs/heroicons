@@ -1,9 +1,14 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tailwindlabs/heroicons/master/.github/logo.svg" alt="Heroicons">
+  <a href="https://heroicons.com/#gh-light-mode-only" target="_blank">
+    <img src="./.github/logo-light.svg" alt="Heroicons" width="300">
+  </a>
+  <a href="https://heroicons.com/#gh-dark-mode-only" target="_blank">
+    <img src="./.github/logo-dark.svg" alt="Heroicons" width="300">
+  </a>
 </p>
 
 <p align="center">
-  A set of 450+ free MIT-licensed high-quality SVG icons for you to use in your web projects. <br>Available as basic SVG icons and via first-party <a href="#react">React</a> and <a href="#vue">Vue</a> libraries.
+  Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS. <br>Available as basic SVG icons and via first-party <a href="#react">React</a> and <a href="#vue">Vue</a> libraries.
 <p>
 
 <p align="center">
@@ -44,23 +49,23 @@ npm install @heroicons/react
 Now each icon can be imported individually as a React component:
 
 ```js
-import { BeakerIcon } from '@heroicons/react/solid'
+import { BeakerIcon } from '@heroicons/react/24/solid'
 
 function MyComponent() {
   return (
     <div>
-      <BeakerIcon className="h-5 w-5 text-blue-500"/>
+      <BeakerIcon className="h-6 w-6 text-blue-500"/>
       <p>...</p>
     </div>
   )
 }
 ```
 
-The 24x24 outline icons can be imported from `@heroicons/react/outline`, and the 20x20 solid icons can be imported from `@heroicons/react/solid`.
+The 24x24 outline icons can be imported from `@heroicons/react/24/outline`, and the 20x20 solid icons can be imported from `@heroicons/react/20/solid`.
 
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
-[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/react/outline/)
+[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/react/24/outline/)
 
 
 ## Vue
@@ -78,13 +83,13 @@ Now each icon can be imported individually as a Vue component:
 ```vue
 <template>
   <div>
-    <BeakerIcon class="h-5 w-5 text-blue-500"/>
+    <BeakerIcon class="h-6 w-6 text-blue-500"/>
     <p>...</p>
   </div>
 </template>
 
 <script>
-import { BeakerIcon } from '@heroicons/vue/solid'
+import { BeakerIcon } from '@heroicons/vue/24/solid'
 
 export default {
   components: { BeakerIcon }
@@ -92,11 +97,11 @@ export default {
 </script>
 ```
 
-The 24x24 outline icons can be imported from `@heroicons/vue/outline`, and the 20x20 solid icons can be imported from `@heroicons/vue/solid`.
+The 24x24 outline icons can be imported from `@heroicons/vue/24/outline`, and the 20x20 solid icons can be imported from `@heroicons/vue/20/solid`.
 
 Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
 
-[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/outline/)
+[Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/24/outline/)
 
 ## License
 
