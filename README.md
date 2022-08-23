@@ -1,9 +1,14 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tailwindlabs/heroicons/master/.github/logo.svg" alt="Heroicons">
+  <a href="https://heroicons.com/#gh-light-mode-only" target="_blank">
+    <img src="./.github/logo-light.svg" alt="Heroicons" width="350" height="70">
+  </a>
+  <a href="https://heroicons.com/#gh-dark-mode-only" target="_blank">
+    <img src="./.github/logo-dark.svg" alt="Heroicons" width="350" height="70">
+  </a>
 </p>
 
 <p align="center">
-  A set of 450+ free MIT-licensed high-quality SVG icons for you to use in your web projects. <br>Available as basic SVG icons and via first-party <a href="#react">React</a> and <a href="#vue">Vue</a> libraries.
+  Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS. <br>Available as basic SVG icons and via first-party <a href="#react">React</a> and <a href="#vue">Vue</a> libraries.
 <p>
 
 <p align="center">
