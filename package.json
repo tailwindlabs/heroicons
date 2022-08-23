@@ -3,19 +3,18 @@
   "version": "1.0.6",
   "license": "MIT",
   "files": [
-    "outline/",
-    "mini/",
-    "filled/",
+    "20/",
+    "24/",
     "README.md"
   ],
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "npm run build-outline && npm run build-mini && npm run build-filled && npm run build-react && npm run build-vue",
+    "build": "npm run build-24-outline && npm run build-20-solid && npm run build-24-solid && npm run build-react && npm run build-vue",
     "build-react": "node ./scripts/build.js react",
     "build-vue": "node ./scripts/build.js vue",
-    "build-outline": "rimraf ./outline ./optimized/outline && svgo --config=svgo.outline.yaml -f ./src/outline -o ./optimized/outline --pretty --indent=2 && cp -R ./optimized/outline ./outline",
-    "build-mini": "rimraf ./mini ./optimized/mini && svgo --config=svgo.mini.yaml -f ./src/mini -o ./optimized/mini --pretty --indent=2 && cp -R ./optimized/mini ./mini",
-    "build-filled": "rimraf ./filled ./optimized/filled && svgo --config=svgo.filled.yaml -f ./src/filled -o ./optimized/filled --pretty --indent=2 && cp -R ./optimized/filled ./filled"
+    "build-24-outline": "rimraf ./24/outline ./optimized/24/outline && svgo --config=svgo.24.outline.yaml -f ./src/24/outline -o ./optimized/24/outline --pretty --indent=2 && mkdir -p ./24 && cp -R ./optimized/24/outline ./24/outline",
+    "build-20-solid": "rimraf ./20/solid ./optimized/20/solid && svgo --config=svgo.20.solid.yaml -f ./src/20/solid -o ./optimized/20/solid --pretty --indent=2 && mkdir -p ./20 && cp -R ./optimized/20/solid ./20/solid",
+    "build-24-solid": "rimraf ./24/solid ./optimized/24/solid && svgo --config=svgo.24.solid.yaml -f ./src/24/solid -o ./optimized/24/solid --pretty --indent=2 && mkdir -p ./24 && cp -R ./optimized/24/solid ./24/solid"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
