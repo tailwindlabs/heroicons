@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "prepublishOnly": "npm run build",
+    "prebuild": "rimraf ./{20,24} ./{vue,react}/{20,24} ./optimized/{20,24}",
     "build": "npm run build-24-outline && npm run build-20-solid && npm run build-24-solid && npm run build-react && npm run build-vue",
     "build-react": "node ./scripts/build.js react",
     "build-vue": "node ./scripts/build.js vue",
