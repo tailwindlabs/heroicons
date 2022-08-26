@@ -59,13 +59,13 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@heroicons/react`
-        run: npm publish --tag insiders --prefix react
+        run: npm publish ./react --tag insiders
         env:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@heroicons/vue`
-        run: npm publish --tag insiders --prefix vue
+        run: npm publish ./vue --tag insiders
         env:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
