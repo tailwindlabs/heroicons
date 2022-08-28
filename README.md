@@ -103,6 +103,11 @@ Icons use an upper camel case naming convention and are always suffixed with the
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/24/outline/)
 
+## Community Projects
+
+### Blade
+- [wireui/heroicons](https://github.com/wireui/heroicons) ▲ Heroicons for Laravel Blade 
+
 ## License
 
 This library is MIT licensed.
