@@ -9,7 +9,7 @@ const { dirname } = require('path')
 
 let transform = {
   react: async (svg, componentName, format) => {
-    let component = await svgr(svg, { ref: true }, { componentName })
+    let component = await svgr(svg, { ref: true, titleProp: true }, { componentName })
     let { code } = await babel.transformAsync(component, {
       plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }]],
     })
