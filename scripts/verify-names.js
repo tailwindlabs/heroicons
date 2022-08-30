@@ -10,7 +10,7 @@ const srcPaths = {
 async function main() {
   let files = await Promise.all(
     Object.entries(srcPaths).map(async ([name, path]) => {
-      return { name, files: await fs.readdir(path) }
+      return { name, files: (await fs.readdir(path)).filter((file) => file.endsWith('.svg')) }
     })
   )
 
