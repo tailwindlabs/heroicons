@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Nothing yet!
+### Added
+
+- Add new icons (`bug-ant`, `eye-dropper`, `pause-circle`, `play-circle`, `power`, `rocket-launch`, `square-2-stack-3d`, `stop-circle`, `trophy`, `tv`, `viewfinder-circle`, `window`) ([#809](https://github.com/tailwindlabs/heroicons/pull/809))
 
 ## [2.0.10] - 2022-08-30
 
