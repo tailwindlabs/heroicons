@@ -103,6 +103,13 @@ Icons use an upper camel case naming convention and are always suffixed with the
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/24/outline/)
 
+## Unofficial Packages
+
+Some unofficial packages exist for other frameworks:
+
+* [Django / Jinja](https://github.com/adamchainz/heroicons)
+* [Laravel / Livewire](https://github.com/wireui/heroicons)
+
 ## License
 
 This library is MIT licensed.
