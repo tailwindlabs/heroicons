@@ -14,9 +14,9 @@
     "build": "npm run build-24-outline && npm run build-20-solid && npm run build-24-solid && npm run build-react && npm run build-vue",
     "build-react": "node ./scripts/build.js react",
     "build-vue": "node ./scripts/build.js vue",
-    "build-24-outline": "rimraf ./24/outline ./optimized/24/outline && svgo --config=svgo.24.outline.yaml -f ./src/24/outline -o ./optimized/24/outline --pretty --indent=2 && mkdir -p ./24 && cp -R ./optimized/24/outline ./24/outline",
-    "build-20-solid": "rimraf ./20/solid ./optimized/20/solid && svgo --config=svgo.20.solid.yaml -f ./src/20/solid -o ./optimized/20/solid --pretty --indent=2 && mkdir -p ./20 && cp -R ./optimized/20/solid ./20/solid",
-    "build-24-solid": "rimraf ./24/solid ./optimized/24/solid && svgo --config=svgo.24.solid.yaml -f ./src/24/solid -o ./optimized/24/solid --pretty --indent=2 && mkdir -p ./24 && cp -R ./optimized/24/solid ./24/solid",
+    "build-24-outline": "rimraf ./24/outline ./optimized/24/outline && svgo --config=svgo.24.outline.mjs -f ./src/24/outline -o ./optimized/24/outline --pretty --indent=2 && mkdir -p ./24 && cp -R ./optimized/24/outline ./24/outline",
+    "build-20-solid": "rimraf ./20/solid ./optimized/20/solid && svgo --config=svgo.20.solid.mjs -f ./src/20/solid -o ./optimized/20/solid --pretty --indent=2 && mkdir -p ./20 && cp -R ./optimized/20/solid ./20/solid",
+    "build-24-solid": "rimraf ./24/solid ./optimized/24/solid && svgo --config=svgo.24.solid.mjs -f ./src/24/solid -o ./optimized/24/solid --pretty --indent=2 && mkdir -p ./24 && cp -R ./optimized/24/solid ./24/solid",
     "release-channel": "node ./scripts/release-channel.js",
     "release-notes": "node ./scripts/release-notes.js"
   },
@@ -28,6 +28,6 @@
     "camelcase": "^6.0.0",
     "prettier": "^2.8.7",
     "rimraf": "^3.0.2",
-    "svgo": "^1.3.2"
+    "svgo": "^3.0.2"
   }
 }
