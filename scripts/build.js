@@ -59,16 +59,33 @@ async function getIcons(style) {
   )
 }
 
-function exportAll(icons, format, includeExtension = true) {
-  return icons
-    .map(({ componentName }) => {
-      let extension = includeExtension ? '.js' : ''
-      if (format === 'esm') {
-        return `export { default as ${componentName} } from './${componentName}${extension}'`
-      }
-      return `module.exports.${componentName} = require("./${componentName}${extension}")`
-    })
-    .join('\n')
+function exportAll(icons, format, isTypeDeclaration = false) {
+  const iconNames = []
+  const iconExports = icons.map(({ componentName }) => {
+    iconNames.push(componentName)
+    let extension = isTypeDeclaration ? '' : '.js'
+
+    if (format === 'esm') {
+      return `export { default as ${componentName} } from './${componentName}${extension}'`
+    }
+    return `module.exports.${componentName} = require("./${componentName}${extension}")`
+  })
+
+  const generateTypes = () => {
+    if (!isTypeDeclaration) return []
+    return [
+      `export type iconNamesType = ${iconNames.map((name) => `'${name}'`).join(' | ')}`,
+      `export const iconNames: iconNamesType[];`,
+    ]
+  }
+
+  const namesArray = () => {
+    if (isTypeDeclaration) return []
+    if (format === 'esm') return [`export const iconNames = ${JSON.stringify(iconNames)}`]
+    return [`module.exports.iconNames = ${JSON.stringify(iconNames)}`]
+  }
+
+  return [...iconExports, ...namesArray(), ...generateTypes()].join('\n')
 }
 
 async function ensureWrite(file, text) {
@@ -105,7 +122,7 @@ async function buildIcons(package, style, format) {
 
   await ensureWrite(`${outDir}/index.js`, exportAll(icons, format))
 
-  await ensureWrite(`${outDir}/index.d.ts`, exportAll(icons, 'esm', false))
+  await ensureWrite(`${outDir}/index.d.ts`, exportAll(icons, 'esm', true))
 }
 
 async function main(package) {
