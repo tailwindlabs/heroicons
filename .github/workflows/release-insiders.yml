@@ -7,6 +7,9 @@ on:
 permissions:
   contents: read
 
+env:
+  CI: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,17 +19,17 @@ jobs:
         node-version: [18]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Use cached node_modules
         id: cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: nodeModules-${{ hashFiles('**/package-lock.json') }}-${{ matrix.node-version }}
@@ -36,36 +39,31 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
-        env:
-          CI: true
 
-      - name: Resolve version
-        id: vars
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - name: Calculate environment variables
+        run: |
+          echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
-      - name: "Version `heroicons` based on commit: 0.0.0-insiders.${{ steps.vars.outputs.sha_short }}"
-        run: npm version 0.0.0-insiders.${{ steps.vars.outputs.sha_short }} --force --no-git-tag-version
+      - name: "Version `heroicons` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}"
+        run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version
 
-      - name: "Version `@heroicons/react` based on commit: 0.0.0-insiders.${{ steps.vars.outputs.sha_short }}"
-        run: npm version 0.0.0-insiders.${{ steps.vars.outputs.sha_short }} --force --no-git-tag-version --prefix react
+      - name: "Version `@heroicons/react` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}"
+        run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix react
 
-      - name: "Version `@heroicons/vue` based on commit: 0.0.0-insiders.${{ steps.vars.outputs.sha_short }}"
-        run: npm version 0.0.0-insiders.${{ steps.vars.outputs.sha_short }} --force --no-git-tag-version --prefix vue
+      - name: "Version `@heroicons/vue` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}"
+        run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix vue
 
       - name: Publish `heroicons`
         run: npm publish --tag insiders
         env:
-          CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@heroicons/react`
         run: npm publish ./react --tag insiders
         env:
-          CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@heroicons/vue`
         run: npm publish ./vue --tag insiders
         env:
-          CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
