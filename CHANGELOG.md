@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add `title` and `titleId` props to the React types ([#814](https://github.com/tailwindlabs/heroicons/pull/814))
 - Fix `information-circle` icon alignment ([#846](https://github.com/tailwindlabs/heroicons/pull/846))
+- Fix `minus` icon alignment ([0a88242](https://github.com/tailwindlabs/heroicons/commit/0a88242ffddbd79177b8cd4cf954d3a54be121a6))
 
 ## [2.0.11] - 2022-09-12
 
