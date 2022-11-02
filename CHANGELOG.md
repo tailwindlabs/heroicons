@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Nothing yet!
+
+## [2.0.13] - 2022-11-02
+
 ### Fixed
 
 - Fix `minus` icon alignment ([0a88242](https://github.com/tailwindlabs/heroicons/commit/0a88242ffddbd79177b8cd4cf954d3a54be121a6))
@@ -186,7 +190,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Everything!
 
-[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.0.12...HEAD
+[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.0.13...HEAD
+[2.0.13]: https://github.com/tailwindlabs/heroicons/compare/v2.0.12...v2.0.13
 [2.0.12]: https://github.com/tailwindlabs/heroicons/compare/v2.0.11...v2.0.12
 [2.0.11]: https://github.com/tailwindlabs/heroicons/compare/v2.0.10...v2.0.11
 [2.0.10]: https://github.com/tailwindlabs/heroicons/compare/v2.0.9...v2.0.10
