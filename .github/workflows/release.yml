@@ -1,8 +1,8 @@
-name: Release Insiders
+name: Release
 
 on:
-  push:
-    branches: [master]
+  release:
+    types: [published]
 
 permissions:
   contents: read
@@ -42,28 +42,19 @@ jobs:
 
       - name: Calculate environment variables
         run: |
-          echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-
-      - name: "Version `heroicons` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}"
-        run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version
-
-      - name: "Version `@heroicons/react` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}"
-        run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix react
-
-      - name: "Version `@heroicons/vue` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}"
-        run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix vue
+          echo "RELEASE_CHANNEL=$(npm run release-channel --silent)" >> $GITHUB_ENV
 
       - name: Publish `heroicons`
-        run: npm publish --tag insiders
+        run: npm publish --tag ${{ env.RELEASE_CHANNEL }}  
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@heroicons/react`
-        run: npm publish ./react --tag insiders
+        run: npm publish ./react --tag ${{ env.RELEASE_CHANNEL }}  
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@heroicons/vue`
-        run: npm publish ./vue --tag insiders
+        run: npm publish ./vue --tag ${{ env.RELEASE_CHANNEL }}  
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
