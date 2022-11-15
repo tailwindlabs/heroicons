@@ -6,6 +6,7 @@ const svgr = require('@svgr/core').default
 const babel = require('@babel/core')
 const { compile: compileVue } = require('@vue/compiler-dom')
 const { dirname } = require('path')
+const { snakeCase } = require("snake-case")
 
 let transform = {
   react: async (svg, componentName, format) => {
@@ -45,6 +46,16 @@ let transform = {
       )
       .replace('export function render', 'module.exports = function render')
   },
+  gomponents: (svg, componentName) => {
+    var content = svg.replace(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">\n  `,
+        `h.Mini(g.Group(children),\n\t\tg.Raw(\``)
+    content = content.replace(`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">\n  `,
+        `h.Outline(g.Group(children),\n\t\tg.Raw(\``)
+    content = content.replace(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">\n  `,
+        `h.Solid(g.Group(children),\n\t\tg.Raw(\``)
+    content = content.replace(`\n</svg>\n`, `\`))`)
+    return `func ${componentName.replace('Icon', '')}(children ...g.Node) g.Node {\n\treturn ${content}\n}`
+  }
 }
 
 async function getIcons(style) {
@@ -96,12 +107,39 @@ async function buildIcons(package, style, format) {
           ? `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'> & { title?: string, titleId?: string }): JSX.Element;\nexport default ${componentName};\n`
           : `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';\ndeclare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;\nexport default ${componentName};\n`
 
+      if (package === 'gomponents') {
+        let goPackage
+        switch (style) {
+          case '24/outline':
+            goPackage = 'outline'
+            break
+          case '24/solid':
+            goPackage = 'solid'
+            break
+          case '20/solid':
+            goPackage = 'mini'
+            break
+        }
+
+        outDir = `./${package}/${goPackage}`
+
+        content = `package ${goPackage}\n\nimport (\n\tg "github.com/maragudk/gomponents"\n\n\th "github.com/maragudk/gomponents-heroicons"\n)\n\n` + content + "\n"
+
+        return [
+          ensureWrite(`${outDir}/${snakeCase(componentName.replace('Icon', ''))}.go`, content),
+        ]
+      }
+
       return [
         ensureWrite(`${outDir}/${componentName}.js`, content),
         ...(types ? [ensureWrite(`${outDir}/${componentName}.d.ts`, types)] : []),
       ]
     })
   )
+
+  if (package === 'gomponents') {
+    return
+  }
 
   await ensureWrite(`${outDir}/index.js`, exportAll(icons, format))
 
@@ -119,6 +157,22 @@ async function main(package) {
     rimraf(`./${package}/24/outline/*`),
     rimraf(`./${package}/24/solid/*`),
   ])
+
+  if (package === 'gomponents') {
+    await Promise.all([
+      rimraf(`./${package}/solid/*`),
+      rimraf(`./${package}/outline/*`),
+      rimraf(`./${package}/mini/*`),
+    ])
+
+    await Promise.all([
+      buildIcons(package, '20/solid', ''),
+      buildIcons(package, '24/outline', ''),
+      buildIcons(package, '24/solid', ''),
+    ])
+
+    return console.log(`Finished building ${package} package.`)
+  }
 
   await Promise.all([
     buildIcons(package, '20/solid', 'cjs'),
