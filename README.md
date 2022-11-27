@@ -63,7 +63,7 @@ function MyComponent() {
 
 The 24x24 outline icons can be imported from `@heroicons/react/24/outline`, the 24x24 solid icons can be imported from `@heroicons/react/24/solid`, and the 20x20 solid icons can be imported from `@heroicons/react/20/solid`.
 
-Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
+Icons use PascalCase naming convention and are always suffixed with the word `Icon`.
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/react/24/outline/)
 
@@ -99,7 +99,7 @@ export default {
 
 The 24x24 outline icons can be imported from `@heroicons/vue/24/outline`, the 24x24 solid icons can be imported from `@heroicons/vue/24/solid`, and the 20x20 solid icons can be imported from `@heroicons/vue/20/solid`.
 
-Icons use an upper camel case naming convention and are always suffixed with the word `Icon`.
+Icons use PascalCase naming convention and are always suffixed with the word `Icon`.
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/24/outline/)
 
