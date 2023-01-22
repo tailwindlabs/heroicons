@@ -45,6 +45,9 @@ let transform = {
       )
       .replace('export function render', 'module.exports = function render')
   },
+  solid: (svg, componentName, format) => (
+    `import { JSX } from 'solid-js';const ${componentName} = ({...props}) => (${ svg.replace(/^<(.+) /, '<$1 {...props} ') });export default ${componentName};`
+  ),
 }
 
 async function getIcons(style) {
@@ -59,10 +62,9 @@ async function getIcons(style) {
   )
 }
 
-function exportAll(icons, format, includeExtension = true) {
+function exportAll(icons, format, extension = '.js') {
   return icons
     .map(({ componentName }) => {
-      let extension = includeExtension ? '.js' : ''
       if (format === 'esm') {
         return `export { default as ${componentName} } from './${componentName}${extension}'`
       }
@@ -80,7 +82,7 @@ async function ensureWriteJson(file, json) {
   await ensureWrite(file, JSON.stringify(json, null, 2))
 }
 
-async function buildIcons(package, style, format) {
+async function buildIcons(package, style, format, extension = '.js') {
   let outDir = `./${package}/${style}`
   if (format === 'esm') {
     outDir += '/esm'
@@ -91,21 +93,27 @@ async function buildIcons(package, style, format) {
   await Promise.all(
     icons.flatMap(async ({ componentName, svg }) => {
       let content = await transform[package](svg, componentName, format)
-      let types =
-        package === 'react'
-          ? `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'> & { title?: string, titleId?: string }): JSX.Element;\nexport default ${componentName};\n`
-          : `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';\ndeclare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;\nexport default ${componentName};\n`
-
+      let types;
+      switch (package) {
+        case 'react': {
+          types = `import * as React from 'react';\ndeclare function ${componentName}(props: React.ComponentProps<'svg'> & { title?: string, titleId?: string }): JSX.Element;\nexport default ${componentName};\n`
+        }
+        case 'vue': {
+          types = `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';\ndeclare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;\nexport default ${componentName};\n`
+        }
+        case 'solid': {
+          types = `import { JSX, JSXElement } from 'solid-js';\ndeclare function ${componentName}(props: { [x: string]: any; }): JSXElement;\nexport default ${componentName};\n`
+        }
+      }
       return [
-        ensureWrite(`${outDir}/${componentName}.js`, content),
+        ensureWrite(`${outDir}/${componentName}${extension}`, content),
         ...(types ? [ensureWrite(`${outDir}/${componentName}.d.ts`, types)] : []),
       ]
     })
   )
 
-  await ensureWrite(`${outDir}/index.js`, exportAll(icons, format))
-
-  await ensureWrite(`${outDir}/index.d.ts`, exportAll(icons, 'esm', false))
+  await ensureWrite(`${outDir}/index.js`, exportAll(icons, format, extension))
+  await ensureWrite(`${outDir}/index.d.ts`, exportAll(icons, 'esm', ''))
 }
 
 async function main(package) {
@@ -120,20 +128,31 @@ async function main(package) {
     rimraf(`./${package}/24/solid/*`),
   ])
 
-  await Promise.all([
-    buildIcons(package, '20/solid', 'cjs'),
-    buildIcons(package, '20/solid', 'esm'),
-    buildIcons(package, '24/outline', 'cjs'),
-    buildIcons(package, '24/outline', 'esm'),
-    buildIcons(package, '24/solid', 'cjs'),
-    buildIcons(package, '24/solid', 'esm'),
-    ensureWriteJson(`./${package}/20/solid/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/20/solid/package.json`, cjsPackageJson),
-    ensureWriteJson(`./${package}/24/outline/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/24/outline/package.json`, cjsPackageJson),
-    ensureWriteJson(`./${package}/24/solid/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/24/solid/package.json`, cjsPackageJson),
-  ])
+  if (package === 'solid') {
+    await Promise.all([
+      buildIcons(package, '20/solid', 'esm', '.tsx'),
+      buildIcons(package, '24/outline', 'esm', '.tsx'),
+      buildIcons(package, '24/solid', 'esm', '.tsx'),
+      ensureWriteJson(`./${package}/20/solid/esm/package.json`, esmPackageJson),
+      ensureWriteJson(`./${package}/24/outline/esm/package.json`, esmPackageJson),
+      ensureWriteJson(`./${package}/24/solid/esm/package.json`, esmPackageJson),
+    ])
+  } else {
+    await Promise.all([
+      buildIcons(package, '20/solid', 'cjs'),
+      buildIcons(package, '20/solid', 'esm'),
+      buildIcons(package, '24/outline', 'cjs'),
+      buildIcons(package, '24/outline', 'esm'),
+      buildIcons(package, '24/solid', 'cjs'),
+      buildIcons(package, '24/solid', 'esm'),
+      ensureWriteJson(`./${package}/20/solid/esm/package.json`, esmPackageJson),
+      ensureWriteJson(`./${package}/20/solid/package.json`, cjsPackageJson),
+      ensureWriteJson(`./${package}/24/outline/esm/package.json`, esmPackageJson),
+      ensureWriteJson(`./${package}/24/outline/package.json`, cjsPackageJson),
+      ensureWriteJson(`./${package}/24/solid/esm/package.json`, esmPackageJson),
+      ensureWriteJson(`./${package}/24/solid/package.json`, cjsPackageJson),
+    ])
+  }
 
   return console.log(`Finished building ${package} package.`)
 }
