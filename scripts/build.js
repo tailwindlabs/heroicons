@@ -112,7 +112,7 @@ async function buildIcons(package, style, format, extension = '.js') {
     })
   )
 
-  await ensureWrite(`${outDir}/index.js`, exportAll(icons, format, extension))
+  await ensureWrite(`${outDir}/index${extension}`, exportAll(icons, format, extension.match(/^\.tsx?$/) ? '' : extension))
   await ensureWrite(`${outDir}/index.d.ts`, exportAll(icons, 'esm', ''))
 }
 
