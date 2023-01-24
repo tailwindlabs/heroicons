@@ -108,6 +108,28 @@ async function buildIcons(package, style, format) {
   await ensureWrite(`${outDir}/index.d.ts`, exportAll(icons, 'esm', false))
 }
 
+/**
+ * @param {string[]} styles
+ */
+async function buildExports(styles) {
+  let pkg = {}
+
+  for (let style of styles) {
+    pkg[`./${style}`] = {
+      "types": `./${style}/index.d.ts`,
+      "import": `./${style}/index.js`,
+      "require": `./${style}/index.js`
+    }
+    pkg[`./${style}/*`] = {
+      "types": `./${style}/*.d.ts`,
+      "import": `./${style}/esm/*.js`,
+      "require": `./${style}/*.js`
+    }
+  }
+
+  return pkg
+}
+
 async function main(package) {
   const cjsPackageJson = { module: './esm/index.js', sideEffects: false }
   const esmPackageJson = { type: 'module', sideEffects: false }
@@ -134,6 +156,16 @@ async function main(package) {
     ensureWriteJson(`./${package}/24/solid/esm/package.json`, esmPackageJson),
     ensureWriteJson(`./${package}/24/solid/package.json`, cjsPackageJson),
   ])
+
+  let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
+
+  packageJson.exports = await buildExports([
+    '20/solid',
+    '24/outline',
+    '24/solid',
+  ])
+
+  await ensureWriteJson(`./${package}/package.json`, packageJson)
 
   return console.log(`Finished building ${package} package.`)
 }
