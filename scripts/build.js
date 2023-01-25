@@ -125,6 +125,11 @@ async function buildExports(styles) {
       "import": `./${style}/esm/*.js`,
       "require": `./${style}/*.js`
     }
+    pkg[`./${style}/*.js`] = {
+      "types": `./${style}/*.d.ts`,
+      "import": `./${style}/esm/*.js`,
+      "require": `./${style}/*.js`
+    }
   }
 
   return pkg
