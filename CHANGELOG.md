@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Nothing yet!
+### Fixed
+
+- Fix React ref types ([#903](https://github.com/tailwindlabs/heroicons/pull/903))
+
+### Changed
+
+- Specify explicit package exports ([#920](https://github.com/tailwindlabs/heroicons/pull/920))
 
 ## [2.0.13] - 2022-11-02
 
