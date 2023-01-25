@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Nothing yet!
+
+## [2.0.14] - 2023-01-25
+
 ### Fixed
 
 - Fix React ref types ([#903](https://github.com/tailwindlabs/heroicons/pull/903))
@@ -196,7 +200,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Everything!
 
-[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.0.13...HEAD
+[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.0.14...HEAD
+[2.0.14]: https://github.com/tailwindlabs/heroicons/compare/v2.0.13...v2.0.14
 [2.0.13]: https://github.com/tailwindlabs/heroicons/compare/v2.0.12...v2.0.13
 [2.0.12]: https://github.com/tailwindlabs/heroicons/compare/v2.0.11...v2.0.12
 [2.0.11]: https://github.com/tailwindlabs/heroicons/compare/v2.0.10...v2.0.11
