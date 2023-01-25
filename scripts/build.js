@@ -130,6 +130,17 @@ async function buildExports(styles) {
       "import": `./${style}/esm/*.js`,
       "require": `./${style}/*.js`
     }
+
+    // This dir is basically an implementation detail, but it's needed for
+    // backwards compatibility in case people were importing from it directly.
+    pkg[`./${style}/esm/*`] = {
+      "types": `./${style}/*.d.ts`,
+      "import": `./${style}/esm/*.js`
+    }
+    pkg[`./${style}/esm/*.js`] = {
+      "types": `./${style}/*.d.ts`,
+      "import": `./${style}/esm/*.js`
+    }
   }
 
   return pkg
