@@ -16,6 +16,27 @@
     "solid"
   ],
   "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    "./outline": {
+      "default": "./outline/index.js"
+    },
+    "./outline/index": {
+      "default": "./outline/index.js"
+    },
+    "./outline/index.js": {
+      "default": "./outline/index.js"
+    },
+    "./solid": {
+      "default": "./solid/index.js"
+    },
+    "./solid/index": {
+      "default": "./solid/index.js"
+    },
+    "./solid/index.js": {
+      "default": "./solid/index.js"
+    },
     "./20/solid": {
       "types": "./20/solid/index.d.ts",
       "import": "./20/solid/index.js",

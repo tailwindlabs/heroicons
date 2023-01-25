@@ -114,6 +114,18 @@ async function buildIcons(package, style, format) {
 async function buildExports(styles) {
   let pkg = {}
 
+  // For those that want to read the version from package.json
+  pkg[`./package.json`] = { "default": "./package.json" }
+
+  // Backwards compatibility with v1 imports (points to proxy that prints an error message):
+  pkg["./outline"] = { "default": "./outline/index.js" }
+  pkg["./outline/index"] = { "default": "./outline/index.js" }
+  pkg["./outline/index.js"] = { "default": "./outline/index.js" }
+  pkg["./solid"] = { "default": "./solid/index.js" }
+  pkg["./solid/index"] = { "default": "./solid/index.js" }
+  pkg["./solid/index.js"] = { "default": "./solid/index.js" }
+
+  // Explicit exports for each style:
   for (let style of styles) {
     pkg[`./${style}`] = {
       "types": `./${style}/index.d.ts`,
