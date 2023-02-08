@@ -15,6 +15,7 @@
     "outline",
     "solid"
   ],
+  "sideEffects": false,
   "exports": {
     "./package.json": {
       "default": "./package.json"
