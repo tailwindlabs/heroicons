@@ -88,12 +88,8 @@ Now each icon can be imported individually as a Vue component:
   </div>
 </template>
 
-<script>
+<script setup>
 import { BeakerIcon } from '@heroicons/vue/24/solid'
-
-export default {
-  components: { BeakerIcon }
-}
 </script>
 ```
 
