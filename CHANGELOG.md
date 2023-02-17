@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Nothing yet!
 
+## [2.0.16] - 2023-02-17
+
+- Nothing yet!
+
 ## [2.0.15] - 2023-02-08
 
 ### Fixed
@@ -206,7 +210,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Everything!
 
-[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.0.15...HEAD
+[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.0.16...HEAD
+[2.0.16]: https://github.com/tailwindlabs/heroicons/compare/v2.0.15...v2.0.16
 [2.0.15]: https://github.com/tailwindlabs/heroicons/compare/v2.0.14...v2.0.15
 [2.0.14]: https://github.com/tailwindlabs/heroicons/compare/v2.0.13...v2.0.14
 [2.0.13]: https://github.com/tailwindlabs/heroicons/compare/v2.0.12...v2.0.13
