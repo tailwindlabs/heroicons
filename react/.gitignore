@@ -1,4 +1,5 @@
 *
+!*.js
 !.gitignore
 !package.json
 !outline
