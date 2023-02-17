@@ -114,6 +114,12 @@ async function buildIcons(package, style, format) {
 async function buildExports(styles) {
   let pkg = {}
 
+  // To appease Vite's optimizeDeps feature which requires a root-level import
+  pkg[`.`] = {
+    import: `./index.esm.js`,
+    require: `./index.js`,
+  }
+
   // For those that want to read the version from package.json
   pkg[`./package.json`] = { "default": "./package.json" }
 
