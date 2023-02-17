@@ -13,7 +13,9 @@
     "20",
     "24",
     "outline",
-    "solid"
+    "solid",
+    "index.esm.js",
+    "index.js"
   ],
   "sideEffects": false,
   "exports": {
