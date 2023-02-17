@@ -7,7 +7,7 @@ module.exports = new Proxy(
       }
 
       throw new Error(
-        `You\'re trying to import from \`@heroicons/react\` directly which will not work. Please import from one of \`@heroicons/react/20/solid\`, \`@heroicons/react/24/solid\`, or \`@heroicons/react/24/outline\` instead.`
+        `You\'re trying to import from \`@heroicons/vue\` directly which will not work. Please import from one of \`@heroicons/vue/20/solid\`, \`@heroicons/vue/24/solid\`, or \`@heroicons/vue/24/outline\` instead.`
       )
     },
   }
