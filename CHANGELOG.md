@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.16] - 2023-02-17
 
-- Nothing yet!
+- Add root-level import ([#936](https://github.com/tailwindlabs/heroicons/pull/936))
 
 ## [2.0.15] - 2023-02-08
 
