@@ -17,6 +17,10 @@
   ],
   "sideEffects": false,
   "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.js"
+    },
     "./package.json": {
       "default": "./package.json"
     },
