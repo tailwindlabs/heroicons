@@ -29,6 +29,9 @@
     "./outline": {
       "default": "./outline/index.js"
     },
+    "./outline/": {
+      "default": "./outline/index.js"
+    },
     "./outline/index": {
       "default": "./outline/index.js"
     },
@@ -38,6 +41,9 @@
     "./solid": {
       "default": "./solid/index.js"
     },
+    "./solid/": {
+      "default": "./solid/index.js"
+    },
     "./solid/index": {
       "default": "./solid/index.js"
     },
@@ -45,6 +51,11 @@
       "default": "./solid/index.js"
     },
     "./20/solid": {
+      "types": "./20/solid/index.d.ts",
+      "import": "./20/solid/index.js",
+      "require": "./20/solid/index.js"
+    },
+    "./20/solid/": {
       "types": "./20/solid/index.d.ts",
       "import": "./20/solid/index.js",
       "require": "./20/solid/index.js"
@@ -72,6 +83,11 @@
       "import": "./24/outline/index.js",
       "require": "./24/outline/index.js"
     },
+    "./24/outline/": {
+      "types": "./24/outline/index.d.ts",
+      "import": "./24/outline/index.js",
+      "require": "./24/outline/index.js"
+    },
     "./24/outline/*": {
       "types": "./24/outline/*.d.ts",
       "import": "./24/outline/esm/*.js",
@@ -91,6 +107,11 @@
       "import": "./24/outline/esm/*.js"
     },
     "./24/solid": {
+      "types": "./24/solid/index.d.ts",
+      "import": "./24/solid/index.js",
+      "require": "./24/solid/index.js"
+    },
+    "./24/solid/": {
       "types": "./24/solid/index.d.ts",
       "import": "./24/solid/index.js",
       "require": "./24/solid/index.js"
