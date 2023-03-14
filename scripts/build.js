@@ -8,7 +8,7 @@ const { compile: compileVue } = require('@vue/compiler-dom')
 const { dirname } = require('path')
 
 const packageExtension = {
-  react: 'jsx',
+  react: 'js',
   vue: 'js',
   nullstack: 'njs',
 }
