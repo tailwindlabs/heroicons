@@ -11,7 +11,7 @@
     "prepublishOnly": "npm run build",
     "lint": "node ./scripts/verify-names.js",
     "prebuild": "rimraf ./{20,24} ./{vue,react,nullstack}/{20,24} ./optimized/{20,24}",
-    "build": "npm run build-24-outline && npm run build-20-solid && npm run build-24-solid && npm run build-react && npm run build-vue",
+    "build": "npm run build-24-outline && npm run build-20-solid && npm run build-24-solid && npm run build-react && npm run build-vue && npm run build-nullstack",
     "build-react": "node ./scripts/build.js react",
     "build-vue": "node ./scripts/build.js vue",
     "build-nullstack": "node ./scripts/build.js nullstack",

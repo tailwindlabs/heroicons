@@ -1,5 +1,5 @@
 {
-  "name": "@heroicons/react",
+  "name": "@heroicons/nullstack",
   "license": "MIT",
   "version": "2.0.16",
   "description": "",
@@ -118,6 +118,6 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": ">= 16"
+    "nullstack": ">= 16"
   }
 }
