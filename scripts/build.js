@@ -99,11 +99,11 @@ async function getIcons(style) {
 function exportAll(icons, format, includeExtension = true, customExtension = 'js') {
   return icons
     .map(({ componentName }) => {
-      let extension = includeExtension ? customExtension : ''
+      let extension = includeExtension ? `.${customExtension}` : ''
       if (format === 'esm') {
-        return `export { default as ${componentName} } from './${componentName}.${extension}'`
+        return `export { default as ${componentName} } from './${componentName}${extension}'`
       }
-      return `module.exports.${componentName} = require("./${componentName}.${extension}")`
+      return `module.exports.${componentName} = require("./${componentName}${extension}")`
     })
     .join('\n')
 }
