@@ -139,7 +139,7 @@ async function buildIcons(package, style, format) {
           types = `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';\ndeclare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;`
           break
         case 'nullstack':
-          types = `import type { NullstackFunctionalComponent, HTMLAttributes, NullstackNode } from 'nullstack';\ndeclare const ${componentName}: NullstackFunctionalComponent<HTMLAttributes & NullstackNode>;`
+          types = `import type { NullstackFunctionalComponent, SVGProps, NullstackNode } from 'nullstack';\ndeclare const ${componentName}: NullstackFunctionalComponent<SVGProps<NullstackNode>>;`
           break
       }
 
