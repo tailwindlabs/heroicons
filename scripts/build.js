@@ -121,43 +121,43 @@ async function buildExports(styles) {
   }
 
   // For those that want to read the version from package.json
-  pkg[`./package.json`] = { "default": "./package.json" }
+  pkg[`./package.json`] = { default: './package.json' }
 
   // Backwards compatibility with v1 imports (points to proxy that prints an error message):
-  pkg["./outline"] = { "default": "./outline/index.js" }
-  pkg["./outline/index"] = { "default": "./outline/index.js" }
-  pkg["./outline/index.js"] = { "default": "./outline/index.js" }
-  pkg["./solid"] = { "default": "./solid/index.js" }
-  pkg["./solid/index"] = { "default": "./solid/index.js" }
-  pkg["./solid/index.js"] = { "default": "./solid/index.js" }
+  pkg['./outline'] = { default: './outline/index.js' }
+  pkg['./outline/index'] = { default: './outline/index.js' }
+  pkg['./outline/index.js'] = { default: './outline/index.js' }
+  pkg['./solid'] = { default: './solid/index.js' }
+  pkg['./solid/index'] = { default: './solid/index.js' }
+  pkg['./solid/index.js'] = { default: './solid/index.js' }
 
   // Explicit exports for each style:
   for (let style of styles) {
     pkg[`./${style}`] = {
-      "types": `./${style}/index.d.ts`,
-      "import": `./${style}/index.js`,
-      "require": `./${style}/index.js`
+      types: `./${style}/index.d.ts`,
+      import: `./${style}/index.js`,
+      require: `./${style}/index.js`,
     }
     pkg[`./${style}/*`] = {
-      "types": `./${style}/*.d.ts`,
-      "import": `./${style}/esm/*.js`,
-      "require": `./${style}/*.js`
+      types: `./${style}/*.d.ts`,
+      import: `./${style}/esm/*.js`,
+      require: `./${style}/*.js`,
     }
     pkg[`./${style}/*.js`] = {
-      "types": `./${style}/*.d.ts`,
-      "import": `./${style}/esm/*.js`,
-      "require": `./${style}/*.js`
+      types: `./${style}/*.d.ts`,
+      import: `./${style}/esm/*.js`,
+      require: `./${style}/*.js`,
     }
 
     // This dir is basically an implementation detail, but it's needed for
     // backwards compatibility in case people were importing from it directly.
     pkg[`./${style}/esm/*`] = {
-      "types": `./${style}/*.d.ts`,
-      "import": `./${style}/esm/*.js`
+      types: `./${style}/*.d.ts`,
+      import: `./${style}/esm/*.js`,
     }
     pkg[`./${style}/esm/*.js`] = {
-      "types": `./${style}/*.d.ts`,
-      "import": `./${style}/esm/*.js`
+      types: `./${style}/*.d.ts`,
+      import: `./${style}/esm/*.js`,
     }
   }
 
@@ -193,11 +193,7 @@ async function main(package) {
 
   let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
 
-  packageJson.exports = await buildExports([
-    '20/solid',
-    '24/outline',
-    '24/solid',
-  ])
+  packageJson.exports = await buildExports(['20/solid', '24/outline', '24/solid'])
 
   await ensureWriteJson(`./${package}/package.json`, packageJson)
 

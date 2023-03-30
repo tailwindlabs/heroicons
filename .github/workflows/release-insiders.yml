@@ -44,13 +44,13 @@ jobs:
         run: |
           echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
-      - name: "Version `heroicons` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}"
+      - name: 'Version `heroicons` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
         run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version
 
-      - name: "Version `@heroicons/react` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}"
+      - name: 'Version `@heroicons/react` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
         run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix react
 
-      - name: "Version `@heroicons/vue` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}"
+      - name: 'Version `@heroicons/vue` based on commit: 0.0.0-insiders.${{ env.SHA_SHORT }}'
         run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix vue
 
       - name: Publish `heroicons`

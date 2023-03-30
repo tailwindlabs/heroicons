@@ -15,19 +15,23 @@
   <a href="https://heroicons.com"><strong>Browse at Heroicons.com &rarr;</strong></a>
 </p>
 
-
 <p align="center">
     <a href="https://github.com/tailwindlabs/heroicons/releases"><img src="https://img.shields.io/npm/v/heroicons" alt="Latest Release"></a>
     <a href="https://github.com/tailwindlabs/heroicons/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/heroicons.svg" alt="License"></a>
 </p>
-
 
 ## Basic Usage
 
 The quickest way to use these icons is to simply copy the source for the icon you need from [heroicons.com](https://heroicons.com) and inline it directly into your HTML:
 
 ```html
-<svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+<svg
+  class="h-6 w-6 text-gray-500"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke="currentColor"
+  stroke-width="2"
+>
   <path
     stroke-linecap="round"
     stroke-linejoin="round"
@@ -54,7 +58,7 @@ import { BeakerIcon } from '@heroicons/react/24/solid'
 function MyComponent() {
   return (
     <div>
-      <BeakerIcon className="h-6 w-6 text-blue-500"/>
+      <BeakerIcon className="h-6 w-6 text-blue-500" />
       <p>...</p>
     </div>
   )
@@ -67,10 +71,9 @@ Icons use an upper camel case naming convention and are always suffixed with the
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/react/24/outline/)
 
-
 ## Vue
 
-*Note that this library currently only supports Vue 3.*
+_Note that this library currently only supports Vue 3._
 
 First, install `@heroicons/vue` from npm:
 
@@ -83,7 +86,7 @@ Now each icon can be imported individually as a Vue component:
 ```vue
 <template>
   <div>
-    <BeakerIcon class="h-6 w-6 text-blue-500"/>
+    <BeakerIcon class="h-6 w-6 text-blue-500" />
     <p>...</p>
   </div>
 </template>
