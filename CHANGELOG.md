@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Nothing yet!
+### Fixed
+
+- Fix React icon types ([#966](https://github.com/tailwindlabs/heroicons/pull/966))
 
 ## [2.0.16] - 2023-02-17
 
