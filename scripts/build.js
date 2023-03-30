@@ -77,7 +77,7 @@ async function ensureWrite(file, text) {
 }
 
 async function ensureWriteJson(file, json) {
-  await ensureWrite(file, JSON.stringify(json, null, 2))
+  await ensureWrite(file, JSON.stringify(json, null, 2) + '\n')
 }
 
 async function buildIcons(package, style, format) {
