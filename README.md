@@ -40,7 +40,7 @@ The quickest way to use these icons is to simply copy the source for the icon yo
 </svg>
 ```
 
-Both icon styles are preconfigured to be stylable by setting the `color` CSS property, either manually or using utility classes like `text-gray-500` in a framework like [Tailwind CSS](https://tailwindcss.com).
+Both icon styles are preconfigured to be stylable by setting the `color` CSS property, either manually or using utility classes like `text-gray-500` in a framework like [Tailwind CSS](https://tailwindcss.com). Please note that in order to make use of the `stroke-width` property you must import the `outline` version of the icon.
 
 ## React
 
