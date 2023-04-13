@@ -102,6 +102,27 @@ Icons use an upper camel case naming convention and are always suffixed with the
 
 [Browse the full list of icon names on UNPKG &rarr;](https://unpkg.com/browse/@heroicons/vue/24/outline/)
 
+## Ember
+
+First, install the [ember-heroicons](https://github.com/tzellman/ember-heroicons/) addon from npm:
+
+```sh
+ember install ember-heroicons
+```
+
+Now you can use each icon with the `HeroIcon` component:
+
+```hbs
+<HeroIcon @icon="check-circle" />
+```
+
+The `HeroIcon` component supports the following arguments:
+
+- `@icon` - the name of the icon to render
+- `@type` - one of `outline`, `solid` or `mini`
+
+[Browse the full list of icons &rarr;](https://tzellman.github.io/ember-heroicons/)
+
 ## License
 
 This library is MIT licensed.
