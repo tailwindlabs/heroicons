@@ -46,7 +46,7 @@
     },
     "./20/solid": {
       "types": "./20/solid/index.d.ts",
-      "import": "./20/solid/index.js",
+      "import": "./20/solid/esm/index.js",
       "require": "./20/solid/index.js"
     },
     "./20/solid/*": {
@@ -69,7 +69,7 @@
     },
     "./24/outline": {
       "types": "./24/outline/index.d.ts",
-      "import": "./24/outline/index.js",
+      "import": "./24/outline/esm/index.js",
       "require": "./24/outline/index.js"
     },
     "./24/outline/*": {
@@ -92,7 +92,7 @@
     },
     "./24/solid": {
       "types": "./24/solid/index.d.ts",
-      "import": "./24/solid/index.js",
+      "import": "./24/solid/esm/index.js",
       "require": "./24/solid/index.js"
     },
     "./24/solid/*": {

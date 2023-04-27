@@ -135,7 +135,7 @@ async function buildExports(styles) {
   for (let style of styles) {
     pkg[`./${style}`] = {
       types: `./${style}/index.d.ts`,
-      import: `./${style}/index.js`,
+      import: `./${style}/esm/index.js`,
       require: `./${style}/index.js`,
     }
     pkg[`./${style}/*`] = {
