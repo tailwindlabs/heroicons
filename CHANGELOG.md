@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Nothing yet!
+
+## [2.0.18] - 2023-05-09
+
 ### Fixed
 
 - Fix incorrect `esm` paths in package.json for both React and Vue ([#988](https://github.com/tailwindlabs/heroicons/pull/988))
@@ -220,7 +224,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Everything!
 
-[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.0.17...HEAD
+[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.0.18...HEAD
+[2.0.18]: https://github.com/tailwindlabs/heroicons/compare/v2.0.17...v2.0.18
 [2.0.17]: https://github.com/tailwindlabs/heroicons/compare/v2.0.16...v2.0.17
 [2.0.16]: https://github.com/tailwindlabs/heroicons/compare/v2.0.15...v2.0.16
 [2.0.15]: https://github.com/tailwindlabs/heroicons/compare/v2.0.14...v2.0.15
