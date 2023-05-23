@@ -5,6 +5,7 @@ const rimraf = promisify(require('rimraf'))
 const svgr = require('@svgr/core').default
 const babel = require('@babel/core')
 const { compile: compileVue } = require('@vue/compiler-dom')
+const { compile: compileSvelte } = require('svelte/compiler')
 const { dirname } = require('path')
 
 let transform = {
@@ -45,6 +46,15 @@ let transform = {
       )
       .replace('export function render', 'module.exports = function render')
   },
+  svelte: (svg, componentName, format) => {
+    let { js } = compileSvelte(svg, {
+      format: format,
+      css: 'injected',
+      name: componentName,
+    });
+
+    return js.code;
+  },
 }
 
 async function getIcons(style) {
@@ -80,6 +90,42 @@ async function ensureWriteJson(file, json) {
   await ensureWrite(file, JSON.stringify(json, null, 2) + '\n')
 }
 
+function buildTypeDeclaration(package, componentName, format) {
+  return (() => {
+    switch (package) {
+      case 'react': {
+        return `
+import * as React from 'react';
+
+declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string } & React.RefAttributes<SVGSVGElement>>;
+
+export default ${componentName};
+`;
+      }
+      case 'vue': {
+        return `
+import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';
+
+declare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;
+
+export default ${componentName};
+`;
+      }
+      case 'svelte': {
+        return `
+import type { SvelteComponentTyped } from 'svelte';
+
+interface ${componentName}Props {}
+
+declare const ${componentName}: SvelteComponentTyped<${componentName}Props>;
+
+export default ${componentName};
+`;
+      }
+    }
+  })().trim();
+}
+
 async function buildIcons(package, style, format) {
   let outDir = `./${package}/${style}`
   if (format === 'esm') {
@@ -91,14 +137,11 @@ async function buildIcons(package, style, format) {
   await Promise.all(
     icons.flatMap(async ({ componentName, svg }) => {
       let content = await transform[package](svg, componentName, format)
-      let types =
-        package === 'react'
-          ? `import * as React from 'react';\ndeclare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string } & React.RefAttributes<SVGSVGElement>>;\nexport default ${componentName};\n`
-          : `import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';\ndeclare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;\nexport default ${componentName};\n`
+      let types = buildTypeDeclaration(package, componentName, format);
 
       return [
-        ensureWrite(`${outDir}/${componentName}.js`, content),
-        ...(types ? [ensureWrite(`${outDir}/${componentName}.d.ts`, types)] : []),
+        await ensureWrite(`${outDir}/${componentName}.js`, content),
+        ...(types ? [await ensureWrite(`${outDir}/${componentName}.d.ts`, types)] : []),
       ]
     })
   )

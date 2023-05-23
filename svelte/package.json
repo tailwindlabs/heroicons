@@ -1,0 +1,123 @@
+{
+  "name": "@heroicons/svelte",
+  "license": "MIT",
+  "version": "2.0.18",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/tailwindlabs/heroicons#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tailwindlabs/heroicons.git"
+  },
+  "files": [
+    "20",
+    "24",
+    "outline",
+    "solid",
+    "index.esm.js",
+    "index.js"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.js"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    },
+    "./outline": {
+      "default": "./outline/index.js"
+    },
+    "./outline/index": {
+      "default": "./outline/index.js"
+    },
+    "./outline/index.js": {
+      "default": "./outline/index.js"
+    },
+    "./solid": {
+      "default": "./solid/index.js"
+    },
+    "./solid/index": {
+      "default": "./solid/index.js"
+    },
+    "./solid/index.js": {
+      "default": "./solid/index.js"
+    },
+    "./20/solid": {
+      "types": "./20/solid/index.d.ts",
+      "import": "./20/solid/esm/index.js",
+      "require": "./20/solid/index.js"
+    },
+    "./20/solid/*": {
+      "types": "./20/solid/*.d.ts",
+      "import": "./20/solid/esm/*.js",
+      "require": "./20/solid/*.js"
+    },
+    "./20/solid/*.js": {
+      "types": "./20/solid/*.d.ts",
+      "import": "./20/solid/esm/*.js",
+      "require": "./20/solid/*.js"
+    },
+    "./20/solid/esm/*": {
+      "types": "./20/solid/*.d.ts",
+      "import": "./20/solid/esm/*.js"
+    },
+    "./20/solid/esm/*.js": {
+      "types": "./20/solid/*.d.ts",
+      "import": "./20/solid/esm/*.js"
+    },
+    "./24/outline": {
+      "types": "./24/outline/index.d.ts",
+      "import": "./24/outline/esm/index.js",
+      "require": "./24/outline/index.js"
+    },
+    "./24/outline/*": {
+      "types": "./24/outline/*.d.ts",
+      "import": "./24/outline/esm/*.js",
+      "require": "./24/outline/*.js"
+    },
+    "./24/outline/*.js": {
+      "types": "./24/outline/*.d.ts",
+      "import": "./24/outline/esm/*.js",
+      "require": "./24/outline/*.js"
+    },
+    "./24/outline/esm/*": {
+      "types": "./24/outline/*.d.ts",
+      "import": "./24/outline/esm/*.js"
+    },
+    "./24/outline/esm/*.js": {
+      "types": "./24/outline/*.d.ts",
+      "import": "./24/outline/esm/*.js"
+    },
+    "./24/solid": {
+      "types": "./24/solid/index.d.ts",
+      "import": "./24/solid/esm/index.js",
+      "require": "./24/solid/index.js"
+    },
+    "./24/solid/*": {
+      "types": "./24/solid/*.d.ts",
+      "import": "./24/solid/esm/*.js",
+      "require": "./24/solid/*.js"
+    },
+    "./24/solid/*.js": {
+      "types": "./24/solid/*.d.ts",
+      "import": "./24/solid/esm/*.js",
+      "require": "./24/solid/*.js"
+    },
+    "./24/solid/esm/*": {
+      "types": "./24/solid/*.d.ts",
+      "import": "./24/solid/esm/*.js"
+    },
+    "./24/solid/esm/*.js": {
+      "types": "./24/solid/*.d.ts",
+      "import": "./24/solid/esm/*.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "svelte": ">= 3"
+  }
+}

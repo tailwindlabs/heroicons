@@ -1,0 +1,4 @@
+*
+!*.js
+!.gitignore
+!package.json
