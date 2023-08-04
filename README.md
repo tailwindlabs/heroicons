@@ -110,4 +110,4 @@ While we absolutely appreciate anyone's willingness to try and improve the proje
 
 ## License
 
-This library is MIT licensed.
+This library is MIT licensed un cambio.
