@@ -8,6 +8,45 @@ const srcPaths = {
   outline: path.resolve(__dirname, '../src/24/outline/'),
 }
 
+const deprecated = [
+  'arrow-left-on-rectangle.svg',
+  'arrow-right-on-rectangle.svg',
+  'arrow-small-down.svg',
+  'arrow-small-left.svg',
+  'arrow-small-right.svg',
+  'arrow-small-up.svg',
+  'bold.svg',
+  'italic.svg',
+  'minus-small.svg',
+  'plus-small.svg',
+  'underline.svg',
+  'viewfinder-circle.svg',
+  'arrow-left-on-rectangle.svg',
+  'arrow-right-on-rectangle.svg',
+  'arrow-small-down.svg',
+  'arrow-small-left.svg',
+  'arrow-small-right.svg',
+  'arrow-small-up.svg',
+  'bold.svg',
+  'italic.svg',
+  'minus-small.svg',
+  'plus-small.svg',
+  'underline.svg',
+  'viewfinder-circle.svg',
+  'arrow-left-on-rectangle.svg',
+  'arrow-right-on-rectangle.svg',
+  'arrow-small-down.svg',
+  'arrow-small-left.svg',
+  'arrow-small-right.svg',
+  'arrow-small-up.svg',
+  'bold.svg',
+  'italic.svg',
+  'minus-small.svg',
+  'plus-small.svg',
+  'underline.svg',
+  'viewfinder-circle.svg',
+]
+
 async function main() {
   let files = await Promise.all(
     Object.entries(srcPaths).map(async ([name, path]) => {
@@ -22,6 +61,10 @@ async function main() {
 
       for (let file of current.files) {
         if (!other.files.includes(file)) {
+          // Ignore deprecated icons in micro
+          // They're not going to be added
+          if (other.name === 'micro' && deprecated.includes(file)) continue
+
           diffs.push({
             package: current.name,
             file: file,
