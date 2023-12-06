@@ -2,6 +2,7 @@ const fs = require('fs').promises
 const path = require('path')
 
 const srcPaths = {
+  micro: path.resolve(__dirname, '../src/16/solid/'),
   mini: path.resolve(__dirname, '../src/20/solid/'),
   solid: path.resolve(__dirname, '../src/24/solid/'),
   outline: path.resolve(__dirname, '../src/24/outline/'),
