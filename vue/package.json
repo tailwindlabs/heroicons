@@ -45,6 +45,29 @@
     "./solid/index.js": {
       "default": "./solid/index.js"
     },
+    "./16/solid": {
+      "types": "./16/solid/index.d.ts",
+      "import": "./16/solid/esm/index.js",
+      "require": "./16/solid/index.js"
+    },
+    "./16/solid/*": {
+      "types": "./16/solid/*.d.ts",
+      "import": "./16/solid/esm/*.js",
+      "require": "./16/solid/*.js"
+    },
+    "./16/solid/*.js": {
+      "types": "./16/solid/*.d.ts",
+      "import": "./16/solid/esm/*.js",
+      "require": "./16/solid/*.js"
+    },
+    "./16/solid/esm/*": {
+      "types": "./16/solid/*.d.ts",
+      "import": "./16/solid/esm/*.js"
+    },
+    "./16/solid/esm/*.js": {
+      "types": "./16/solid/*.d.ts",
+      "import": "./16/solid/esm/*.js"
+    },
     "./20/solid": {
       "types": "./20/solid/index.d.ts",
       "import": "./20/solid/esm/index.js",
