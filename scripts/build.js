@@ -6,13 +6,22 @@ const svgr = require('@svgr/core').default
 const babel = require('@babel/core')
 const { compile: compileVue } = require('@vue/compiler-dom')
 const { dirname } = require('path')
+const { deprecated } = require('./deprecated')
 
 let transform = {
-  react: async (svg, componentName, format) => {
+  react: async (svg, componentName, format, isDeprecated) => {
     let component = await svgr(svg, { ref: true, titleProp: true }, { componentName })
     let { code } = await babel.transformAsync(component, {
       plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }]],
     })
+
+    // Add a deprecation warning to the component
+    if (isDeprecated) {
+      /** @type {string[]} */
+      let lines = code.split('\n')
+      lines.splice(1, 0, `/** @deprecated */`)
+      code = lines.join('\n')
+    }
 
     if (format === 'esm') {
       return code
@@ -22,10 +31,18 @@ let transform = {
       .replace('import * as React from "react"', 'const React = require("react")')
       .replace('export default', 'module.exports =')
   },
-  vue: (svg, componentName, format) => {
+  vue: (svg, componentName, format, isDeprecated) => {
     let { code } = compileVue(svg, {
       mode: 'module',
     })
+
+    // Add a deprecation warning to the component
+    if (isDeprecated) {
+      /** @type {string[]} */
+      let lines = code.split('\n')
+      lines.splice(2, 0, `/** @deprecated */`)
+      code = lines.join('\n')
+    }
 
     if (format === 'esm') {
       return code.replace('export function', 'export default function')
@@ -55,6 +72,7 @@ async function getIcons(style) {
       componentName: `${camelcase(file.replace(/\.svg$/, ''), {
         pascalCase: true,
       })}Icon`,
+      isDeprecated: deprecated.includes(file),
     }))
   )
 }
@@ -89,18 +107,24 @@ async function buildIcons(package, style, format) {
   let icons = await getIcons(style)
 
   await Promise.all(
-    icons.flatMap(async ({ componentName, svg }) => {
-      let content = await transform[package](svg, componentName, format)
+    icons.flatMap(async ({ componentName, svg, isDeprecated }) => {
+      let content = await transform[package](svg, componentName, format, isDeprecated)
 
       /** @type {string[]} */
       let types = []
 
       if (package === 'react') {
         types.push(`import * as React from 'react';`)
+        if (isDeprecated) {
+          types.push(`/** @deprecated */`)
+        }
         types.push(`declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string } & React.RefAttributes<SVGSVGElement>>;`)
         types.push(`export default ${componentName};`)
       } else {
         types.push(`import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';`)
+        if (isDeprecated) {
+          types.push(`/** @deprecated */`)
+        }
         types.push(`declare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;`)
         types.push(`export default ${componentName};`)
       }
