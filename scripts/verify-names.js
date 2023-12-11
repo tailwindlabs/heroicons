@@ -1,5 +1,6 @@
 const fs = require('fs').promises
 const path = require('path')
+const { deprecated } = require('./deprecated')
 
 const srcPaths = {
   micro: path.resolve(__dirname, '../src/16/solid/'),
@@ -7,45 +8,6 @@ const srcPaths = {
   solid: path.resolve(__dirname, '../src/24/solid/'),
   outline: path.resolve(__dirname, '../src/24/outline/'),
 }
-
-const deprecated = [
-  'arrow-left-on-rectangle.svg',
-  'arrow-right-on-rectangle.svg',
-  'arrow-small-down.svg',
-  'arrow-small-left.svg',
-  'arrow-small-right.svg',
-  'arrow-small-up.svg',
-  'bold.svg',
-  'italic.svg',
-  'minus-small.svg',
-  'plus-small.svg',
-  'underline.svg',
-  'viewfinder-circle.svg',
-  'arrow-left-on-rectangle.svg',
-  'arrow-right-on-rectangle.svg',
-  'arrow-small-down.svg',
-  'arrow-small-left.svg',
-  'arrow-small-right.svg',
-  'arrow-small-up.svg',
-  'bold.svg',
-  'italic.svg',
-  'minus-small.svg',
-  'plus-small.svg',
-  'underline.svg',
-  'viewfinder-circle.svg',
-  'arrow-left-on-rectangle.svg',
-  'arrow-right-on-rectangle.svg',
-  'arrow-small-down.svg',
-  'arrow-small-left.svg',
-  'arrow-small-right.svg',
-  'arrow-small-up.svg',
-  'bold.svg',
-  'italic.svg',
-  'minus-small.svg',
-  'plus-small.svg',
-  'underline.svg',
-  'viewfinder-circle.svg',
-]
 
 async function main() {
   let files = await Promise.all(
