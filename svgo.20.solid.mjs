@@ -17,6 +17,7 @@ export default {
           {
             fill: 'currentColor',
             'aria-hidden': 'true',
+            'data-slot': 'icon',
           },
         ],
       },
