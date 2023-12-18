@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added `micro` icon set ([#1104](https://github.com/tailwindlabs/heroicons/pull/1104))
+- Added micro icon set ([#1104](https://github.com/tailwindlabs/heroicons/pull/1104))
 - Rebuilt some icons for better clarity ([#1104](https://github.com/tailwindlabs/heroicons/pull/1104))
 
 ## [2.0.18] - 2023-05-09
