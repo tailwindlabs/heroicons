@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Nothing yet!
 
+## [2.1.1] - 2023-12-18
+
+### Fixed
+
+- Fixed chevrons in mini set ([#1106](https://github.com/tailwindlabs/heroicons/pull/1106))
+
 ## [2.1.0] - 2023-12-18
 
 ### Added
