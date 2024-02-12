@@ -203,36 +203,22 @@ async function main(package) {
 
   console.log(`Building ${package} package...`)
 
-  await Promise.all([
-    rimraf(`./${package}/16/solid/*`),
-    rimraf(`./${package}/20/solid/*`),
-    rimraf(`./${package}/24/outline/*`),
-    rimraf(`./${package}/24/solid/*`),
-  ])
+  const iconSizes = ['16/solid', '20/solid', '24/outline', '24/solid']
+  
+  await Promise.all(iconSizes.map(size => rimraf(`./${package}/${size}/*`)))
+  
 
   await Promise.all([
-    buildIcons(package, '16/solid', 'cjs'),
-    buildIcons(package, '16/solid', 'esm'),
-    buildIcons(package, '20/solid', 'cjs'),
-    buildIcons(package, '20/solid', 'esm'),
-    buildIcons(package, '24/outline', 'cjs'),
-    buildIcons(package, '24/outline', 'esm'),
-    buildIcons(package, '24/solid', 'cjs'),
-    buildIcons(package, '24/solid', 'esm'),
-    ensureWriteJson(`./${package}/16/solid/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/16/solid/package.json`, cjsPackageJson),
-    ensureWriteJson(`./${package}/20/solid/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/20/solid/package.json`, cjsPackageJson),
-    ensureWriteJson(`./${package}/24/outline/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/24/outline/package.json`, cjsPackageJson),
-    ensureWriteJson(`./${package}/24/solid/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/24/solid/package.json`, cjsPackageJson),
+    ...iconSizes.flatMap((size) => [
+      buildIcons(package, size, 'cjs'),
+      buildIcons(package, size, 'esm'),
+      ensureWriteJson(`./${package}/${size}/esm/package.json`, esmPackageJson),
+      ensureWriteJson(`./${package}/${size}/package.json`, cjsPackageJson)
+    ]),
   ])
 
   let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
-
-  packageJson.exports = await buildExports(['16/solid', '20/solid', '24/outline', '24/solid'])
-
+  packageJson.exports = await buildExports(iconSizes)
   await ensureWriteJson(`./${package}/package.json`, packageJson)
 
   return console.log(`Finished building ${package} package.`)
