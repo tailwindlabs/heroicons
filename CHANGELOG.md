@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Nothing yet!
 
+## [2.1.2] - 2024-02-12
+
+### Changed
+
+- Small refactor just to improve readability ([#1107](https://github.com/tailwindlabs/heroicons/pull/1107))
+
 ## [2.1.1] - 2023-12-18
 
 ### Fixed
@@ -238,6 +244,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Everything!
 
 [unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.1.0...HEAD
+[2.1.2]: https://github.com/tailwindlabs/heroicons/compare/v2.1.1...v2.1.2
+[2.1.1]: https://github.com/tailwindlabs/heroicons/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/tailwindlabs/heroicons/compare/v2.0.18...v2.1.0
 [2.0.18]: https://github.com/tailwindlabs/heroicons/compare/v2.0.17...v2.0.18
 [2.0.17]: https://github.com/tailwindlabs/heroicons/compare/v2.0.16...v2.0.17
