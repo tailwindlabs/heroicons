@@ -15,8 +15,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/tailwindlabs/heroicons/releases"><img src="https://img.shields.io/npm/v/heroicons" alt="Latest Release"></a>
-    <a href="https://github.com/tailwindlabs/heroicons/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/heroicons.svg" alt="License"></a>
+    <a href="https://github.com/tailwindlabs/heroicons/releases"><img src="https://img.shields.io/npm/v/@heroicons/vue" alt="Latest Release"></a>
+    <a href="https://github.com/tailwindlabs/heroicons/blob/master/vue/LICENSE"><img src="https://img.shields.io/npm/l/@heroicons/vue.svg" alt="License"></a>
 </p>
 
 ## Basic Usage
