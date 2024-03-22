@@ -7,7 +7,8 @@
     "16/",
     "20/",
     "24/",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "prepublishOnly": "npm run build",

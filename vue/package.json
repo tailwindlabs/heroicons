@@ -16,7 +16,8 @@
     "outline",
     "solid",
     "index.esm.js",
-    "index.js"
+    "index.js",
+    "LICENSE"
   ],
   "sideEffects": false,
   "exports": {
