@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Nothing yet!
+- Include license file with published packages ([#1151](https://github.com/tailwindlabs/heroicons/pull/1151))
 
 ## [2.1.1] - 2023-12-18
 
