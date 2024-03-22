@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Nothing yet!
+
+## [2.1.2] - 2024-03-22
+
 - Include license file with published packages ([#1151](https://github.com/tailwindlabs/heroicons/pull/1151))
 
 ## [2.1.1] - 2023-12-18
@@ -237,7 +241,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Everything!
 
-[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.1.1...HEAD
+[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.1.2...HEAD
+[2.1.2]: https://github.com/tailwindlabs/heroicons/compare/v2.1.1...v2.1.2
 [2.1.1]: https://github.com/tailwindlabs/heroicons/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/tailwindlabs/heroicons/compare/v2.0.18...v2.1.0
 [2.0.18]: https://github.com/tailwindlabs/heroicons/compare/v2.0.17...v2.0.18
