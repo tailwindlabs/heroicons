@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 env:
   CI: true
@@ -54,16 +55,16 @@ jobs:
         run: npm version 0.0.0-insiders.${{ env.SHA_SHORT }} --force --no-git-tag-version --prefix vue
 
       - name: Publish `heroicons`
-        run: npm publish --tag insiders
+        run: npm publish --provenance --tag insiders
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@heroicons/react`
-        run: npm publish ./react --tag insiders
+        run: npm publish ./react --provenance --tag insiders
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@heroicons/vue`
-        run: npm publish ./vue --tag insiders
+        run: npm publish ./vue --provenance --tag insiders
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

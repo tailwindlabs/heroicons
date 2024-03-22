@@ -2,6 +2,7 @@
   "name": "heroicons",
   "version": "2.1.1",
   "license": "MIT",
+  "repository": "https://github.com/tailwindlabs/heroicons.git",
   "files": [
     "16/",
     "20/",

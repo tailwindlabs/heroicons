@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 env:
   CI: true
@@ -45,16 +46,16 @@ jobs:
           echo "RELEASE_CHANNEL=$(npm run release-channel --silent)" >> $GITHUB_ENV
 
       - name: Publish `heroicons`
-        run: npm publish --tag ${{ env.RELEASE_CHANNEL }}
+        run: npm publish --provenance --tag ${{ env.RELEASE_CHANNEL }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@heroicons/react`
-        run: npm publish ./react --tag ${{ env.RELEASE_CHANNEL }}
+        run: npm publish ./react --provenance --tag ${{ env.RELEASE_CHANNEL }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@heroicons/vue`
-        run: npm publish ./vue --tag ${{ env.RELEASE_CHANNEL }}
+        run: npm publish ./vue --provenance --tag ${{ env.RELEASE_CHANNEL }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
