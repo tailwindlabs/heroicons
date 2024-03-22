@@ -17,7 +17,8 @@
     "solid",
     "index.esm.js",
     "index.js",
-    "LICENSE"
+    "LICENSE",
+    "README.md"
   ],
   "sideEffects": false,
   "exports": {
