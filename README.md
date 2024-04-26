@@ -27,7 +27,7 @@ The quickest way to use these icons is to simply copy the source for the icon yo
 
 ```html
 <svg
-  class="h-6 w-6 text-gray-500"
+  class="size-6 text-gray-500"
   fill="none"
   viewBox="0 0 24 24"
   stroke="currentColor"
@@ -59,7 +59,7 @@ import { BeakerIcon } from '@heroicons/react/24/solid'
 function MyComponent() {
   return (
     <div>
-      <BeakerIcon className="h-6 w-6 text-blue-500" />
+      <BeakerIcon className="size-6 text-blue-500" />
       <p>...</p>
     </div>
   )
@@ -85,7 +85,7 @@ Now each icon can be imported individually as a Vue component:
 ```vue
 <template>
   <div>
-    <BeakerIcon class="h-6 w-6 text-blue-500" />
+    <BeakerIcon class="size-6 text-blue-500" />
     <p>...</p>
   </div>
 </template>
