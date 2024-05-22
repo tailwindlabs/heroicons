@@ -32,7 +32,7 @@ Now each icon can be imported individually as a Vue component:
 ```vue
 <template>
   <div>
-    <BeakerIcon class="h-6 w-6 text-blue-500" />
+    <BeakerIcon class="size-6 text-blue-500" />
     <p>...</p>
   </div>
 </template>
