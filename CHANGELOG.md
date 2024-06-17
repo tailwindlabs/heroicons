@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Nothing yet!
+### Fixed
+
+- Improve tree-shakability of React package ([#1192](https://github.com/tailwindlabs/heroicons/pull/1192))
 
 ## [2.1.3] - 2024-03-22
 

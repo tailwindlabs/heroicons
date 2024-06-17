@@ -23,6 +23,8 @@ let transform = {
       code = lines.join('\n')
     }
 
+    code = code.replace('React.forwardRef(', '/*#__PURE__*/ React.forwardRef(')
+
     if (format === 'esm') {
       return code
     }
