@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Nothing yet!
+
+## [2.1.4] - 2024-06-17
+
 ### Fixed
 
 - Improve tree-shakability of React package ([#1192](https://github.com/tailwindlabs/heroicons/pull/1192))
@@ -247,8 +251,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Everything!
 
-[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.1.3...HEAD
-[2.1.2]: https://github.com/tailwindlabs/heroicons/compare/v2.1.2...v2.1.3
+[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.1.4...HEAD
+[2.1.4]: https://github.com/tailwindlabs/heroicons/compare/v2.1.3...v2.1.4
+[2.1.3]: https://github.com/tailwindlabs/heroicons/compare/v2.1.2...v2.1.3
 [2.1.2]: https://github.com/tailwindlabs/heroicons/compare/v2.1.1...v2.1.2
 [2.1.1]: https://github.com/tailwindlabs/heroicons/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/tailwindlabs/heroicons/compare/v2.0.18...v2.1.0
