@@ -33,5 +33,10 @@
     "prettier": "^2.8.7",
     "rimraf": "^3.0.2",
     "svgo": "^3.0.2"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "printWidth": 100
   }
 }
