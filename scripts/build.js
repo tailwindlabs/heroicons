@@ -9,7 +9,7 @@ const { dirname } = require('path')
 const { deprecated } = require('./deprecated')
 
 let transform = {
-  react: async (svg, componentName, format, isDeprecated) => {
+  '@heroicons-react': async (svg, componentName, format, isDeprecated) => {
     let component = await svgr(svg, { ref: true, titleProp: true }, { componentName })
     let { code } = await babel.transformAsync(component, {
       plugins: [[require('@babel/plugin-transform-react-jsx'), { useBuiltIns: true }]],
@@ -33,7 +33,7 @@ let transform = {
       .replace('import * as React from "react"', 'const React = require("react")')
       .replace('export default', 'module.exports =')
   },
-  vue: (svg, componentName, format, isDeprecated) => {
+  '@heroicons-vue': (svg, componentName, format, isDeprecated) => {
     let { code } = compileVue(svg, {
       mode: 'module',
     })
@@ -101,7 +101,7 @@ async function ensureWriteJson(file, json) {
 }
 
 async function buildIcons(package, style, format) {
-  let outDir = `./${package}/${style}`
+  let outDir = `./packages/${package}/${style}`
   if (format === 'esm') {
     outDir += '/esm'
   }
@@ -120,20 +120,24 @@ async function buildIcons(package, style, format) {
         if (isDeprecated) {
           types.push(`/** @deprecated */`)
         }
-        types.push(`declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string } & React.RefAttributes<SVGSVGElement>>;`)
+        types.push(
+          `declare const ${componentName}: React.ForwardRefExoticComponent<React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & { title?: string, titleId?: string } & React.RefAttributes<SVGSVGElement>>;`
+        )
         types.push(`export default ${componentName};`)
       } else {
         types.push(`import type { FunctionalComponent, HTMLAttributes, VNodeProps } from 'vue';`)
         if (isDeprecated) {
           types.push(`/** @deprecated */`)
         }
-        types.push(`declare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;`)
+        types.push(
+          `declare const ${componentName}: FunctionalComponent<HTMLAttributes & VNodeProps>;`
+        )
         types.push(`export default ${componentName};`)
       }
 
       return [
         ensureWrite(`${outDir}/${componentName}.js`, content),
-        ...(types ? [ensureWrite(`${outDir}/${componentName}.d.ts`, types.join("\n") + "\n")] : []),
+        ...(types ? [ensureWrite(`${outDir}/${componentName}.d.ts`, types.join('\n') + '\n')] : []),
       ]
     })
   )
@@ -206,10 +210,10 @@ async function main(package) {
   console.log(`Building ${package} package...`)
 
   await Promise.all([
-    rimraf(`./${package}/16/solid/*`),
-    rimraf(`./${package}/20/solid/*`),
-    rimraf(`./${package}/24/outline/*`),
-    rimraf(`./${package}/24/solid/*`),
+    rimraf(`./packages/${package}/16/solid/*`),
+    rimraf(`./packages/${package}/20/solid/*`),
+    rimraf(`./packages/${package}/24/outline/*`),
+    rimraf(`./packages/${package}/24/solid/*`),
   ])
 
   await Promise.all([
@@ -221,21 +225,21 @@ async function main(package) {
     buildIcons(package, '24/outline', 'esm'),
     buildIcons(package, '24/solid', 'cjs'),
     buildIcons(package, '24/solid', 'esm'),
-    ensureWriteJson(`./${package}/16/solid/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/16/solid/package.json`, cjsPackageJson),
-    ensureWriteJson(`./${package}/20/solid/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/20/solid/package.json`, cjsPackageJson),
-    ensureWriteJson(`./${package}/24/outline/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/24/outline/package.json`, cjsPackageJson),
-    ensureWriteJson(`./${package}/24/solid/esm/package.json`, esmPackageJson),
-    ensureWriteJson(`./${package}/24/solid/package.json`, cjsPackageJson),
+    ensureWriteJson(`./packages/${package}/16/solid/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./packages/${package}/16/solid/package.json`, cjsPackageJson),
+    ensureWriteJson(`./packages/${package}/20/solid/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./packages/${package}/20/solid/package.json`, cjsPackageJson),
+    ensureWriteJson(`./packages/${package}/24/outline/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./packages/${package}/24/outline/package.json`, cjsPackageJson),
+    ensureWriteJson(`./packages/${package}/24/solid/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./packages/${package}/24/solid/package.json`, cjsPackageJson),
   ])
 
-  let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
+  let packageJson = JSON.parse(await fs.readFile(`./packages/${package}/package.json`, 'utf8'))
 
   packageJson.exports = await buildExports(['16/solid', '20/solid', '24/outline', '24/solid'])
 
-  await ensureWriteJson(`./${package}/package.json`, packageJson)
+  await ensureWriteJson(`./packages/${package}/package.json`, packageJson)
 
   return console.log(`Finished building ${package} package.`)
 }
