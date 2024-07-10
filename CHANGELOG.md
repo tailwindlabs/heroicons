@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Nothing yet!
+
+## [2.1.5] - 2024-07-10
+
 ### Added
 
 - Add new icons (`arrow-turn-*`, `bold`, `calendar-date-range`, `divide`, `document-currency-*`, `equals`, `h1`, `h2`, `h3`, `italic`, `link-slash`, `numbered-list`, `percent-badge`, `slash`, `strikethrough`, `underline`)
@@ -253,7 +257,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Everything!
 
-[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.1.4...HEAD
+[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.1.5...HEAD
+[2.1.5]: https://github.com/tailwindlabs/heroicons/compare/v2.1.4...v2.1.5
 [2.1.4]: https://github.com/tailwindlabs/heroicons/compare/v2.1.3...v2.1.4
 [2.1.3]: https://github.com/tailwindlabs/heroicons/compare/v2.1.2...v2.1.3
 [2.1.2]: https://github.com/tailwindlabs/heroicons/compare/v2.1.1...v2.1.2
