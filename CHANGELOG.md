@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Nothing yet!
+### Added
+
+- Add new icons (`arrow-turn-*`, `bold`, `calendar-date-range`, `divide`, `document-currency-*`, `equals`, `h1`, `h2`, `h3`, `italic`, `link-slash`, `numbered-list`, `percent-badge`, `slash`, `strikethrough`, `underline`)
 
 ## [2.1.4] - 2024-06-17
 
