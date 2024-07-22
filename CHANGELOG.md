@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Nothing yet!
+### Fixed
+
+- Removed unncessary clipping path from `solid/arrow-left-circle` ([#1211](https://github.com/tailwindlabs/heroicons/pull/1211))
 
 ## [2.1.5] - 2024-07-10
 
