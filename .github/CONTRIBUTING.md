@@ -1,5 +1,35 @@
 # Contributing
 
+## Jokula Build Info
+
+- Created a package namespace `jk`
+- Icons go in `src/16/jk`, `src/20/jk`, `src/24/jk`
+- Icons should be named by `<three letter code>-<icon name>`, eg. `isl-waterfall-skogafoss`
+- These are the files involved, grep `jk` in them:
+   package.json
+   react/index.esm.js
+   react/index.js
+   react/package.json
+   scripts/build.js
+   scripts/verify-names.js
+   vue/index.esm.js
+   vue/index.js
+   vue/package.json
+   svgo.16.jk.mjs
+   svgo.20.jk.mjs
+   svgo.24.jk.mjs
+- Adapted GitHub workflow to work with Jokula's GitHub and NPM
+- At NPM, created an organization name `jokula-heroicons` for the scoped packages `@jokula-heroicons/react` and `@jokula-heroicons/vue`
+
+1. Increment the version number in the `package.json`, `./react/package.json` and `./vue/package.json`
+2. Publish the new release on GitHub. This will automatically trigger a GitHub action to publish these packages to NPM.
+
+
+
+----
+
+_Below section is the original Tailwind tooling, we should aspire to staged publishing_
+
 ## Publishing
 
 This section is intended only for the project maintainers.
