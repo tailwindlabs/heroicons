@@ -11,6 +11,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Removed unncessary clipping path from `solid/arrow-left-circle` ([#1211](https://github.com/tailwindlabs/heroicons/pull/1211))
 
+### Added
+
+- build: publish to public NPM registries
+- build: create staging environment(s)
+- test: create "proper" tests :wobbly_face:
+- feat: add more Iceland icons
+- feat: add next icon set
+
+## [0.0.0] - 2024-10-08
+
+### Added
+
+- Reset version to [0.0.0] to re-timeline our fork
+- Added Icelandic icon set with prefix `isl-`
+- Added @jokuladesign build for `jk` packages
+- Updated documentation for `jk` packages
+
 ## [2.1.5] - 2024-07-10
 
 ### Added
