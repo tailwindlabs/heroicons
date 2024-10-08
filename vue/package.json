@@ -1,18 +1,19 @@
 {
-  "name": "@heroicons/vue",
+  "name": "@jokula-heroicons/vue",
   "license": "MIT",
   "version": "2.1.5",
   "description": "",
   "keywords": [],
-  "homepage": "https://github.com/tailwindlabs/heroicons#readme",
+  "homepage": "https://www.jokula.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tailwindlabs/heroicons.git"
+    "url": "https://github.com/jokuladesign/jokula-heroicons.git"
   },
   "files": [
     "16",
     "20",
     "24",
+    "jk",
     "outline",
     "solid",
     "index.esm.js",
@@ -28,6 +29,15 @@
     },
     "./package.json": {
       "default": "./package.json"
+    },
+    "./jk": {
+      "default": "./jk/index.js"
+    },
+    "./jk/index": {
+      "default": "./jk/index.js"
+    },
+    "./jk/index.js": {
+      "default": "./jk/index.js"
     },
     "./outline": {
       "default": "./outline/index.js"
@@ -46,6 +56,75 @@
     },
     "./solid/index.js": {
       "default": "./solid/index.js"
+    },
+    "./16/jk": {
+      "types": "./16/jk/index.d.ts",
+      "import": "./16/jk/esm/index.js",
+      "require": "./16/jk/index.js"
+    },
+    "./16/jk/*": {
+      "types": "./16/jk/*.d.ts",
+      "import": "./16/jk/esm/*.js",
+      "require": "./16/jk/*.js"
+    },
+    "./16/jk/*.js": {
+      "types": "./16/jk/*.d.ts",
+      "import": "./16/jk/esm/*.js",
+      "require": "./16/jk/*.js"
+    },
+    "./16/jk/esm/*": {
+      "types": "./16/jk/*.d.ts",
+      "import": "./16/jk/esm/*.js"
+    },
+    "./16/jk/esm/*.js": {
+      "types": "./16/jk/*.d.ts",
+      "import": "./16/jk/esm/*.js"
+    },
+    "./20/jk": {
+      "types": "./20/jk/index.d.ts",
+      "import": "./20/jk/esm/index.js",
+      "require": "./20/jk/index.js"
+    },
+    "./20/jk/*": {
+      "types": "./20/jk/*.d.ts",
+      "import": "./20/jk/esm/*.js",
+      "require": "./20/jk/*.js"
+    },
+    "./20/jk/*.js": {
+      "types": "./20/jk/*.d.ts",
+      "import": "./20/jk/esm/*.js",
+      "require": "./20/jk/*.js"
+    },
+    "./20/jk/esm/*": {
+      "types": "./20/jk/*.d.ts",
+      "import": "./20/jk/esm/*.js"
+    },
+    "./20/jk/esm/*.js": {
+      "types": "./20/jk/*.d.ts",
+      "import": "./20/jk/esm/*.js"
+    },
+    "./24/jk": {
+      "types": "./24/jk/index.d.ts",
+      "import": "./24/jk/esm/index.js",
+      "require": "./24/jk/index.js"
+    },
+    "./24/jk/*": {
+      "types": "./24/jk/*.d.ts",
+      "import": "./24/jk/esm/*.js",
+      "require": "./24/jk/*.js"
+    },
+    "./24/jk/*.js": {
+      "types": "./24/jk/*.d.ts",
+      "import": "./24/jk/esm/*.js",
+      "require": "./24/jk/*.js"
+    },
+    "./24/jk/esm/*": {
+      "types": "./24/jk/*.d.ts",
+      "import": "./24/jk/esm/*.js"
+    },
+    "./24/jk/esm/*.js": {
+      "types": "./24/jk/*.d.ts",
+      "import": "./24/jk/esm/*.js"
     },
     "./16/solid": {
       "types": "./16/solid/index.d.ts",
