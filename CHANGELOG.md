@@ -19,6 +19,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - feat: add more Iceland icons
 - feat: add next icon set
 
+
+## [1.0.0] - 2024-10-08
+
+### Fixed
+
+- Updated README and CONTRIBUTING with more accurate detail
+
+### Added
+
+- First production release, incremented to version 1.0.0 :rocket_emoji:
+
 ## [0.0.0] - 2024-10-08
 
 ### Added
