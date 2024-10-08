@@ -2,10 +2,14 @@
 
 ## Jokula Build Info
 
-- Created a package namespace `jk`
+> This is a hard fork of `tailwindlabs/heroicon` that attempts to maintain downstream sync with canonical icons in `src`
+> Build and tooling is specific to this fork, it is kind of janky but works for now :shrug_emoji:
+
+- Created a new package `jk`
 - Icons go in `src/16/jk`, `src/20/jk`, `src/24/jk`
 - Icons should be named by `<three letter code>-<icon name>`, eg. `isl-waterfall-skogafoss`
 - These are the files involved, grep `jk` in them:
+   ```
    package.json
    react/index.esm.js
    react/index.js
@@ -18,13 +22,34 @@
    svgo.16.jk.mjs
    svgo.20.jk.mjs
    svgo.24.jk.mjs
+   ```
 - Adapted GitHub workflow to work with Jokula's GitHub and NPM
 - At NPM, created an organization name `jokula-heroicons` for the scoped packages `@jokula-heroicons/react` and `@jokula-heroicons/vue`
 
-1. Increment the version number in the `package.json`, `./react/package.json` and `./vue/package.json`
-2. Publish the new release on GitHub. This will automatically trigger a GitHub action to publish these packages to NPM.
+----
 
+### Jokula Build Instructions
 
+> Develop in branches, build and release from `main`
+
+`// ----- DEVELOPMENT`
+
+- Create features, fixes, etc in branch using [conventional commits spec](https://www.conventionalcommits.org/)
+- Merge PRs to `main` using "Rebase and merge"
+- Build and release directly from `main`
+
+`// ----- BUILD STEPS`
+   1. `git checkout main`
+   2. Increment package version in `package.json`, `react/package.json`, and `vue/package.json`
+   3. Run `npm run build && npm install`
+   4. Update `CHANGELOG`
+   5. `git add` if needed
+   6. `git commit -am 'RELEASE: v<semver>'`
+
+`// ----- RELEASE STEPS`
+   1. Go to `github.com/jokuladesign/jokula-heroicons`
+   2. Create GitHub release tag with same version as build step (2.)
+   3. GitHub release workflow action will publish packages to NPM @jokuladesign-heroicons
 
 ----
 
