@@ -25,7 +25,8 @@
     "build-20-solid": "rimraf ./20/solid ./optimized/20/solid && svgo --config=svgo.20.solid.mjs -f ./src/20/solid -o ./optimized/20/solid --pretty --indent=2 && mkdir -p ./20 && cp -R ./optimized/20/solid ./20/solid",
     "build-24-solid": "rimraf ./24/solid ./optimized/24/solid && svgo --config=svgo.24.solid.mjs -f ./src/24/solid -o ./optimized/24/solid --pretty --indent=2 && mkdir -p ./24 && cp -R ./optimized/24/solid ./24/solid",
     "release-channel": "node ./scripts/release-channel.js",
-    "release-notes": "node ./scripts/release-notes.js"
+    "release-notes": "node ./scripts/release-notes.js",
+    "test": "npm run lint && echo '==> NOTE: `test` is an alias of `lint` until other tests are created'"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
