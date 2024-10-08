@@ -39,7 +39,7 @@
 - Build and release directly from `main`
 
 `// ----- BUILD STEPS`
-   1. `git checkout main`
+   1. `git checkout main; git pull`
    2. Increment package version in `package.json`, `react/package.json`, and `vue/package.json`
    3. Run `npm run build && npm install`
    4. Update `CHANGELOG`

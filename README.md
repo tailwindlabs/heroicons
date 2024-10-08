@@ -9,8 +9,8 @@
 <br>
 
 <p align="center">
-  A Jokula fork of Heroicons. All icons are additive to the core Heroicons set, and are created in their own `jk` packages.
-  <br><br>This leaves the canonical Heroicon source svg directories untouched, enabling downstream sync from `tailwindlabs/heroicons` to update canonical icons into the `src` directory.
+  A Jokula hard fork of Heroicons. All icons are additive to the core Heroicons set, and are created in their own `jk` packages.
+  <br><br>This fork attempts to leave the canonical Heroicon source svg directories untouched, enabling downstream sync from `tailwindlabs/heroicons` into the `src` directory.
   <br><br>See `.github/CONTRIBUTING.md` for more information.
   <br>Available as basic SVG icons and via first-party <a href="#react">React</a> and <a href="#vue">Vue</a> libraries.
 <p>
