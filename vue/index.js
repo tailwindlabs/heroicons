@@ -9,7 +9,7 @@ module.exports = new Proxy(
       }
 
       throw new Error(
-        `Importing from \`@heroicons/vue\` directly is not supported. Please import from either \`@heroicons/vue/16/solid\`, \`@heroicons/vue/20/solid\`, \`@heroicons/vue/24/solid\`, or \`@heroicons/vue/24/outline\` instead.`
+        `Importing from \`@jokula-heroicons/vue\` directly is not supported. Please import from either \`@jokula-heroicons/vue/16/jk\`, \`@jokula-heroicons/vue/20/jk\`, \`@jokula-heroicons/vue/24/jk\`, \`@jokula-heroicons/vue/16/solid\`, \`@jokula-heroicons/vue/20/solid\`, \`@jokula-heroicons/vue/24/solid\`, or \`@jokula-heroicons/vue/24/outline\` instead.`
       )
     },
   }

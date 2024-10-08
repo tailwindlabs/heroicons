@@ -9,7 +9,7 @@ module.exports = new Proxy(
       }
 
       throw new Error(
-        `Importing from \`@heroicons/react\` directly is not supported. Please import from either \`@heroicons/react/16/solid\`, \`@heroicons/react/20/solid\`, \`@heroicons/react/24/solid\`, or \`@heroicons/react/24/outline\` instead.`
+        `Importing from \`@jokula-heroicons/react\` directly is not supported. Please import from either \`@jokula-heroicons/react/16/jk\`, \`@jokula-heroicons/react/20/jk\`, \`@jokula-heroicons/react/24/jk\`, \`@jokula-heroicons/react/16/solid\`, \`@jokula-heroicons/react/20/solid\`, \`@jokula-heroicons/react/24/solid\`, or \`@jokula-heroicons/react/24/outline\` instead.`
       )
     },
   }

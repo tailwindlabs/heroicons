@@ -17,45 +17,32 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18]
+        node-version: [20.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Use cached node_modules
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: nodeModules-${{ hashFiles('**/package-lock.json') }}-${{ matrix.node-version }}
-          restore-keys: |
-            nodeModules-
+      - run: npm ci
+      - run: npm install
 
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install
-
-      - name: Calculate environment variables
-        run: |
-          echo "RELEASE_CHANNEL=$(npm run release-channel --silent)" >> $GITHUB_ENV
-
-      - name: Publish `heroicons`
-        run: npm publish --provenance --tag ${{ env.RELEASE_CHANNEL }}
+      - name: Publish `jokula-heroicons`
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish `@heroicons/react`
-        run: npm publish ./react --provenance --tag ${{ env.RELEASE_CHANNEL }}
+      - name: Publish `@jokula-heroicons/react`
+        run: npm publish --access-public ./react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish `@heroicons/vue`
-        run: npm publish ./vue --provenance --tag ${{ env.RELEASE_CHANNEL }}
+      - name: Publish `@jokula-heroicons/vue`
+        run: npm publish --access-public ./vue
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+

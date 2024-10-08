@@ -3,6 +3,9 @@ const path = require('path')
 const { deprecated } = require('./deprecated')
 
 const srcPaths = {
+  jk_16: path.resolve(__dirname, '../src/16/jk/'),
+  jk_20: path.resolve(__dirname, '../src/20/jk/'),
+  jk_24: path.resolve(__dirname, '../src/24/jk/'),
   micro: path.resolve(__dirname, '../src/16/solid/'),
   mini: path.resolve(__dirname, '../src/20/solid/'),
   solid: path.resolve(__dirname, '../src/24/solid/'),

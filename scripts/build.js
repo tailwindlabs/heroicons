@@ -159,6 +159,9 @@ async function buildExports(styles) {
   pkg[`./package.json`] = { default: './package.json' }
 
   // Backwards compatibility with v1 imports (points to proxy that prints an error message):
+  pkg['./jk'] = { default: './jk/index.js' }
+  pkg['./jk/index'] = { default: './jk/index.js' }
+  pkg['./jk/index.js'] = { default: './jk/index.js' }
   pkg['./outline'] = { default: './outline/index.js' }
   pkg['./outline/index'] = { default: './outline/index.js' }
   pkg['./outline/index.js'] = { default: './outline/index.js' }
@@ -206,6 +209,9 @@ async function main(package) {
   console.log(`Building ${package} package...`)
 
   await Promise.all([
+    rimraf(`./${package}/16/jk/*`),
+    rimraf(`./${package}/20/jk/*`),
+    rimraf(`./${package}/24/jk/*`),
     rimraf(`./${package}/16/solid/*`),
     rimraf(`./${package}/20/solid/*`),
     rimraf(`./${package}/24/outline/*`),
@@ -213,6 +219,12 @@ async function main(package) {
   ])
 
   await Promise.all([
+    buildIcons(package, '16/jk', 'cjs'),
+    buildIcons(package, '16/jk', 'esm'),
+    buildIcons(package, '20/jk', 'cjs'),
+    buildIcons(package, '20/jk', 'esm'),
+    buildIcons(package, '24/jk', 'cjs'),
+    buildIcons(package, '24/jk', 'esm'),
     buildIcons(package, '16/solid', 'cjs'),
     buildIcons(package, '16/solid', 'esm'),
     buildIcons(package, '20/solid', 'cjs'),
@@ -221,6 +233,12 @@ async function main(package) {
     buildIcons(package, '24/outline', 'esm'),
     buildIcons(package, '24/solid', 'cjs'),
     buildIcons(package, '24/solid', 'esm'),
+    ensureWriteJson(`./${package}/16/jk/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/16/jk/package.json`, cjsPackageJson),
+    ensureWriteJson(`./${package}/20/jk/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/20/jk/package.json`, cjsPackageJson),
+    ensureWriteJson(`./${package}/24/jk/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/24/jk/package.json`, cjsPackageJson),
     ensureWriteJson(`./${package}/16/solid/esm/package.json`, esmPackageJson),
     ensureWriteJson(`./${package}/16/solid/package.json`, cjsPackageJson),
     ensureWriteJson(`./${package}/20/solid/esm/package.json`, esmPackageJson),
@@ -233,7 +251,7 @@ async function main(package) {
 
   let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
 
-  packageJson.exports = await buildExports(['16/solid', '20/solid', '24/outline', '24/solid'])
+  packageJson.exports = await buildExports(['16/jk', '20/jk', '24/jk', '16/solid', '20/solid', '24/outline', '24/solid'])
 
   await ensureWriteJson(`./${package}/package.json`, packageJson)
 
