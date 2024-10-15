@@ -123,7 +123,7 @@ async function buildIcons(package, style, format) {
 
         outDir = `./${package}/${goPackage}`
 
-        content = `package ${goPackage}\n\nimport (\n\tg "github.com/maragudk/gomponents"\n\n\th "github.com/maragudk/gomponents-heroicons"\n)\n\n` + content + "\n"
+        content = `package ${goPackage}\n\nimport (\n\tg "github.com/maragudk/gomponents"\n\n\th "github.com/maragudk/gomponents-heroicons/v2"\n)\n\n` + content + "\n"
 
         return [
           ensureWrite(`${outDir}/${snakeCase(componentName.replace('Icon', ''))}.go`, content),
