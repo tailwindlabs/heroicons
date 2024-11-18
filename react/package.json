@@ -144,6 +144,6 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": ">= 16"
+    "react": ">= 16 || ^19.0.0-rc"
   }
 }
