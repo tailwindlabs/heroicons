@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add React 19 support ([#1247](https://github.com/tailwindlabs/heroicons/pull/1247))
+
 ### Fixed
 
-- Removed unncessary clipping path from `solid/arrow-left-circle` ([#1211](https://github.com/tailwindlabs/heroicons/pull/1211))
+- Removed unnecessary clipping path from `solid/arrow-left-circle` ([#1211](https://github.com/tailwindlabs/heroicons/pull/1211))
 
 ## [2.1.5] - 2024-07-10
 
