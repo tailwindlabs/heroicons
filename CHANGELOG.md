@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Nothing yet!
+
+## [2.2.0] - 2024-11-18
+
 ### Added
 
 - Add React 19 support ([#1247](https://github.com/tailwindlabs/heroicons/pull/1247))
@@ -263,7 +267,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Everything!
 
-[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.1.5...HEAD
+[unreleased]: https://github.com/tailwindlabs/heroicons/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/tailwindlabs/heroicons/compare/v2.1.5...v2.2.0
 [2.1.5]: https://github.com/tailwindlabs/heroicons/compare/v2.1.4...v2.1.5
 [2.1.4]: https://github.com/tailwindlabs/heroicons/compare/v2.1.3...v2.1.4
 [2.1.3]: https://github.com/tailwindlabs/heroicons/compare/v2.1.2...v2.1.3
