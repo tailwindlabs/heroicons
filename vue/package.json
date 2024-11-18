@@ -2,8 +2,13 @@
   "name": "@heroicons/vue",
   "license": "MIT",
   "version": "2.2.0",
-  "description": "",
-  "keywords": [],
+  "description": "A set of free MIT-licensed high-quality SVG icons for UI development.",
+  "keywords": [
+    "icons",
+    "svg",
+    "vue",
+    "tailwindcss"
+  ],
   "homepage": "https://github.com/tailwindlabs/heroicons#readme",
   "repository": {
     "type": "git",
