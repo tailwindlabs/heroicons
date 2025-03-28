@@ -15,7 +15,7 @@ export default {
       params: {
         attributes: [
           {
-            'stroke-width': '1.5',
+            'stroke-width': '1.25',
             stroke: 'currentColor',
             'aria-hidden': 'true',
             'data-slot': 'icon',

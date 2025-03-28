@@ -30,6 +30,16 @@
 
 ### Jokula Build Instructions
 
+`// ----- TLDR`
+1. save svg icons into src/<size>
+2. increment package.json version number in root/, react/, and vue/
+3. update CHANGELOG
+4. npm run build && npm install => transpiles svgs to destination dirs
+5. merge to main
+6. create release tag at GitHub
+7. this will trigger GH action to create NPM packages
+8. done
+
 > Develop in branches, build and release from `main`
 
 `// ----- DEVELOPMENT`

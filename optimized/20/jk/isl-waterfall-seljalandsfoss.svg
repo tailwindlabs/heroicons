@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.25" stroke="currentColor" aria-hidden="true" data-slot="icon">
   <circle cx="16.458" cy="16.263" r=".625" fill="#000"/>
   <circle cx=".625" cy=".625" r=".625" fill="#000" transform="matrix(-1 0 0 1 4.583 15.638)"/>
   <circle cx="14.792" cy="14.597" r=".625" fill="#000"/>

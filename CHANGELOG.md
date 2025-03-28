@@ -5,19 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
 ## [Unreleased]
+### Fixed
+- fix malformed svgo generated icons
+
+### Added
+- build: create staging environment(s)
+- test: create "proper" tests :wobbly_face:
+- feat: add next icon set
+- feat: create browser/viewer
+
+
+## [1.1.0] - 2025-03-28
 
 ### Fixed
 
 - Removed unncessary clipping path from `solid/arrow-left-circle` ([#1211](https://github.com/tailwindlabs/heroicons/pull/1211))
+- Updated svgo stroke widths for 16px and 20px icons to 1.0px and 1.25px
 
 ### Added
 
-- build: publish to public NPM registries
-- build: create staging environment(s)
-- test: create "proper" tests :wobbly_face:
-- feat: add more Iceland icons
-- feat: add next icon set
+- Publish to public NPM registries
+- Added San Francisco icons
 
 
 ## [1.0.0] - 2024-10-08
