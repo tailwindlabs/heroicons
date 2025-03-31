@@ -1,0 +1,7 @@
+{
+    "name": "tailwindlabs/heroicons",
+    "description": "A set of free MIT-licensed high-quality SVG icons for UI development.",
+    "type": "library",
+    "license": "MIT",
+    "require": {}
+}
