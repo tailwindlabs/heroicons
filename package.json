@@ -31,8 +31,8 @@
     "release-notes": "node ./scripts/release-notes.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/plugin-transform-react-jsx": "^7.12.12",
+    "@babel/core": "^7.27.3",
+    "@babel/plugin-transform-react-jsx": "^7.27.1",
     "@svgr/core": "^5.5.0",
     "@vue/compiler-dom": "^3.0.5",
     "camelcase": "^6.0.0",
