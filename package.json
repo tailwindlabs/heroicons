@@ -8,7 +8,10 @@
     "svg",
     "tailwindcss"
   ],
-  "repository": "https://github.com/tailwindlabs/heroicons.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tailwindlabs/heroicons.git"
+  },
   "files": [
     "16/",
     "20/",
