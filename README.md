@@ -20,6 +20,11 @@
     <a href="https://github.com/tailwindlabs/heroicons/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/heroicons.svg" alt="License"></a>
 </p -->
 
+## Developer Notes
+`npm run build && npm install`
+<br>
+See CONTRIBUTING.md
+
 ## Basic Usage
 
 The quickest way to use these icons is to copy the source for the icon you need from the repository SVGs at `optimized/<16 | 20 | 24>/jk` and inline it directly into your HTML:
