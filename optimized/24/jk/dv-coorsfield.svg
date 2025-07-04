@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M2 18h20M2 10h20m0-3v15H2V7m17 3V8M5 10V8m-1 4v1m0 2v1m2-4v1m0 2v1m4-4v1m0 2v1m2-4v1m2-1v1m-2 2v1m2-1v1m4-4v1m0 2v1m2-4v1m0 2v1M8 22h8V6s0-4-4-4-4 4-4 4v16Zm2 0v-2h4v2h-4Z"/>
+  <mask id="a" fill="#fff">
+    <path d="M15 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+  </mask>
+  <path fill="#000" d="M12.5 5a.5.5 0 0 0-1 0h1ZM12 6h-.5a.5.5 0 0 0 .146.354L12 6Zm.146.854a.5.5 0 0 0 .708-.708l-.708.708ZM12 5h-.5v1h1V5H12Zm0 1-.354.354.5.5.354-.354.354-.354-.5-.5L12 6Zm3 0h-1a2 2 0 0 1-2 2v2a4 4 0 0 0 4-4h-1Zm-3 3V8a2 2 0 0 1-2-2H8a4 4 0 0 0 4 4V9ZM9 6h1a2 2 0 0 1 2-2V2a4 4 0 0 0-4 4h1Zm3-3v1a2 2 0 0 1 2 2h2a4 4 0 0 0-4-4v1Z" mask="url(#a)"/>
+</svg>
