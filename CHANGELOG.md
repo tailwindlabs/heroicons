@@ -7,14 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
-### Fixed
-- fix malformed svgo generated icons
 
 ### Added
 - build: create staging environment(s)
 - test: create "proper" tests :wobbly_face:
-- feat: add next icon set
 - feat: create browser/viewer
+
+
+## [1.2.0] - 2025-07-04
+
+### Fixed
+
+- Updated README with basic developer info
+- Moved CONTRIBUTING to root
+- Fixed malformed icons
+
+### Added
+- Added Denver icons
 
 
 ## [1.1.0] - 2025-03-28
