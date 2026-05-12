@@ -1,6 +1,8 @@
 name: Release
 
 on:
+  push:
+    branches: [master]
   release:
     types: [published]
 
@@ -41,21 +43,34 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
 
-      - name: Calculate environment variables
+      - name: Resolve release metadata
         run: |
-          echo "RELEASE_CHANNEL=$(npm run release-channel --silent)" >> $GITHUB_ENV
+          if [ "${{ github.event_name }}" = "release" ]; then
+            echo "RELEASE_KIND=release" >> $GITHUB_ENV
+            echo "RELEASE_CHANNEL=$(npm run release-channel --silent)" >> $GITHUB_ENV
+          else
+            echo "RELEASE_KIND=insiders" >> $GITHUB_ENV
+            echo "INSIDERS_VERSION=0.0.0-insiders.$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+            echo "RELEASE_CHANNEL=insiders" >> $GITHUB_ENV
+          fi
+
+      - name: Version `heroicons` based on commit
+        if: env.RELEASE_KIND == 'insiders'
+        run: npm version "$INSIDERS_VERSION" --force --no-git-tag-version
+
+      - name: Version `@heroicons/react` based on commit
+        if: env.RELEASE_KIND == 'insiders'
+        run: npm version "$INSIDERS_VERSION" --force --no-git-tag-version --prefix react
+
+      - name: Version `@heroicons/vue` based on commit
+        if: env.RELEASE_KIND == 'insiders'
+        run: npm version "$INSIDERS_VERSION" --force --no-git-tag-version --prefix vue
 
       - name: Publish `heroicons`
-        run: npm publish --provenance --tag ${{ env.RELEASE_CHANNEL }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --tag "$RELEASE_CHANNEL"
 
       - name: Publish `@heroicons/react`
-        run: npm publish ./react --provenance --tag ${{ env.RELEASE_CHANNEL }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish ./react --provenance --tag "$RELEASE_CHANNEL"
 
       - name: Publish `@heroicons/vue`
-        run: npm publish ./vue --provenance --tag ${{ env.RELEASE_CHANNEL }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish ./vue --provenance --tag "$RELEASE_CHANNEL"
